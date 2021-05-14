@@ -27,10 +27,14 @@ public class Constants {
      * static final int kRightMotor1Port = 2; public static final int
      * kRightMotor2Port = 3; }
      */
+
+    // MOTOR PORTS
     public static final int leftFrontMotorPort = 1;
     public static final int leftRearMotorPort = 2;
     public static final int rightFrontMotorPort = 3;
     public static final int rightRearMotorPort = 4;
     public static final int combineMotorPort = 5;
-    
+
+    // POWER LIMITER (0.0 - 1.0)
+    public static final double powerLimit = 0.4;
 }

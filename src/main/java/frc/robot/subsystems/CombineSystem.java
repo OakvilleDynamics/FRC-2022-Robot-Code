@@ -5,37 +5,40 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class CombineSystem extends CommandBase {
+public class CombineSystem extends SubsystemBase {
 
-  private PWMTalonSRX combineMotor;
+    private PWMTalonSRX combineMotor;
 
-  /** Creates a new Combine. */
-  public CombineSystem() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    /** Creates a new Combine. */
+    public CombineSystem() {
+        combineMotor = new PWMTalonSRX(Constants.combineMotorPort);
+        addChild("CombineMotor", combineMotor);
 
-    combineMotor = new PWMTalonSRX(Constants.combineMotorPort);
-  }
+    }
 
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
 
+    }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    @Override
+    public void simulationPeriodic() {
+        // This method will be called once per scheduler run when in simulation
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    public void combineStart() {
+        combineMotor.set(0.2);
+    }
+
+    public void combineStop() {
+        combineMotor.stopMotor();
+    }
 }

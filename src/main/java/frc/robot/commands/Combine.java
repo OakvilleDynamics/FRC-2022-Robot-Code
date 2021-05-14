@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -13,13 +12,13 @@ import frc.robot.subsystems.CombineSystem;
 public class Combine extends CommandBase {
     private final CombineSystem m_Combine;
 
-    private XboxController controller = new XboxController(1);
-    private boolean combineOn = false;
+    private XboxController auxController = new XboxController(1);
 
     /** Creates a new Combine. */
     public Combine(CombineSystem subsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
         m_Combine = subsystem;
+        addRequirements(m_Combine);
     }
 
     // Called when the command is initially scheduled.
@@ -28,32 +27,22 @@ public class Combine extends CommandBase {
     }
 
     // Called every time the scheduler runs while the command is scheduled.
-    /*s@Override
+    @Override
     public void execute() {
-        private boolean xPressed = controller.getXButtonPressed();
-        private boolean xReleased = controller.getXButtonReleased();
-
-        if (xPressed = true) {
-            combineOn = true;
+        // If the X button is pressed on the controller
+        if (auxController.getXButtonPressed()) {
+            m_Combine.combineStart();
+            System.out.println("Combine started!");
+        } else {
+            m_Combine.combineStop();
+            System.out.println("Combine stopped!");
         }
-        if (xReleased = true) {
-            combineOn = false;
-        }
-
-        if (combineOn = true) {
-            m_Combine.
-        }
-
-        if (combineOn = false) {
-            // combineMotor.set(0);
-        }
-
-    }*/
+    }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        // combineMotor.set(0);
+        m_Combine.combineStop();
     }
 
     // Returns true when the command should end.
