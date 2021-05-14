@@ -1,5 +1,6 @@
 # FRC-Robot-Code
 
+[![CI](https://github.com/OakvilleRobotics/FRC-Robot-Code/actions/workflows/ci.yaml/badge.svg)](https://github.com/OakvilleRobotics/FRC-Robot-Code/actions/workflows/ci.yaml)
 ## Requirements
 
 1. FRC Game Tools
