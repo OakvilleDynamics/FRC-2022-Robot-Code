@@ -17,6 +17,8 @@ public class CombineSystem extends CommandBase {
 
     combineMotor = new PWMTalonSRX(3);
 
+    
+
   }
 
 
@@ -32,6 +34,10 @@ public class CombineSystem extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}
+
+public void setSpeed(double speed){
+  combineMotor.set(speed);
+}
 
   // Returns true when the command should end.
   @Override

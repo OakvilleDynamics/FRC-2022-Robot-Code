@@ -30,7 +30,7 @@ public class Combine extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
-  
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
@@ -42,11 +42,11 @@ public class Combine extends CommandBase {
       combineOn = false;
     }
   if (combineOn = true){
-    combineMotor.set(0.1);
+    m_Combine.setSpeed(0.1);
   }
 
   if (combineOn = false){
-    combineMotor.set(0);
+    m_Combine.setSpeed(0);
   }
 
 
