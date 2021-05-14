@@ -27,4 +27,10 @@ public class Constants {
      * static final int kRightMotor1Port = 2; public static final int
      * kRightMotor2Port = 3; }
      */
+    public static final int leftFrontMotorPort = 1;
+    public static final int leftRearMotorPort = 2;
+    public static final int rightFrontMotorPort = 3;
+    public static final int rightRearMotorPort = 4;
+    public static final int combineMotorPort = 5;
+    
 }
