@@ -31,6 +31,7 @@ public class RobotContainer {
     public final Drivetrain m_drivetrain = new Drivetrain();
     public final CombineSystem m_combine = new CombineSystem();
     public final PneumaticButton m_button = new PneumaticButton();
+    public final RampSystem m_ramp = new RampSystem();
 
     // A chooser for autonomous commands
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,6 +53,7 @@ public class RobotContainer {
         m_drivetrain.setDefaultCommand(new TankDrive(m_drivetrain));
         m_combine.setDefaultCommand(new Combine(m_combine));
         m_button.setDefaultCommand(new ButtonPress(m_button));
+        m_ramp.setDefaultCommand(new Ramp(m_ramp));
 
         // Configure autonomous sendable chooser
         m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());

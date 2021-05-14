@@ -13,6 +13,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 import frc.robot.subsystems.Drivetrain;
@@ -21,7 +22,7 @@ public class TankDrive extends CommandBase {
 
     private final Drivetrain m_drivetrain;
 
-    private XboxController driverController = new XboxController(0);
+    private XboxController driverController = new XboxController(Constants.driverControllerPort);
 
     // Creates a new TankDrive
     public TankDrive(Drivetrain subsystem) {

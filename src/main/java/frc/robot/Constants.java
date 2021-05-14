@@ -10,7 +10,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants. This class should not be used for any other
@@ -39,4 +38,13 @@ public class Constants {
     // POWER LIMITER (0.0 - 1.0)
     public static final double powerLimit = 0.4;
     public static final double combineLimit = 0.2;
+
+    // PNEUMATICS PORTS
+    public static final int airCompressorPort = 0;
+    public static final int buttonrSolenoidPort = 1;
+    public static final int rampSolenoidPort = 2;
+
+    // CONTROLLER PORTS
+    public static final int driverControllerPort = 0;
+    public static final int auxControllerPort = 1;
 }

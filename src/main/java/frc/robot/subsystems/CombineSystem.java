@@ -36,9 +36,11 @@ public class CombineSystem extends SubsystemBase {
     // Sets the combine to start and run at a constant value
     public void combineStart() {
         combineMotor.set(Constants.combineLimit);
+        System.out.println("Combine started!");
     }
 
     public void combineStop() {
         combineMotor.stopMotor();
+        System.out.println("Combine stopped!");
     }
 }
