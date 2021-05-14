@@ -12,7 +12,7 @@ import frc.robot.subsystems.CombineSystem;
 public class Combine extends CommandBase {
   private final CombineSystem m_Combine;
 
-  private XboxController controller = new XboxController(0);
+  private XboxController controller = new XboxController(1);
   private boolean combineOn = false; 
   private boolean xPressed = controller.getXButtonPressed();
   private boolean xReleased = controller.getXButtonReleased();

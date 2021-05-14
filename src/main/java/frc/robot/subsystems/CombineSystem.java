@@ -15,7 +15,7 @@ public class CombineSystem extends CommandBase {
   public CombineSystem() {
     // Use addRequirements() here to declare subsystem dependencies.
 
-    combineMotor = new PWMTalonSRX(3);
+    combineMotor = new PWMTalonSRX(5);
 
     
 
