@@ -16,7 +16,6 @@ public class CombineSystem extends SubsystemBase {
     public CombineSystem() {
         combineMotor = new PWMTalonSRX(Constants.combineMotorPort);
         addChild("CombineMotor", combineMotor);
-
     }
 
     @Override
@@ -34,8 +33,9 @@ public class CombineSystem extends SubsystemBase {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    // Sets the combine to start and run at a constant value
     public void combineStart() {
-        combineMotor.set(0.2);
+        combineMotor.set(Constants.combineLimit);
     }
 
     public void combineStop() {

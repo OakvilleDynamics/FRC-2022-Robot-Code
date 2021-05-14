@@ -23,11 +23,10 @@ public class TankDrive extends CommandBase {
 
     private XboxController driverController = new XboxController(0);
 
+    // Creates a new TankDrive
     public TankDrive(Drivetrain subsystem) {
-
         m_drivetrain = subsystem;
         addRequirements(m_drivetrain);
-
     }
 
     // Called when the command is initially scheduled.
@@ -38,6 +37,7 @@ public class TankDrive extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        // Runs a drive command on the driverController
         m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));

@@ -6,18 +6,19 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.PneumaticButton;
 
-import frc.robot.subsystems.CombineSystem;
+public class ButtonPress extends CommandBase {
 
-public class Combine extends CommandBase {
-    private final CombineSystem m_Combine;
+    private final PneumaticButton m_PneumaticButton;
 
     private XboxController auxController = new XboxController(1);
 
-    // Creates a new Combine.
-    public Combine(CombineSystem subsystem) {
-        m_Combine = subsystem;
-        addRequirements(m_Combine);
+    /** Creates a new ButtonPress. */
+    public ButtonPress(PneumaticButton subsystem) {
+        // Use addRequirements() here to declare subsystem dependencies.
+        m_PneumaticButton = subsystem;
+        addRequirements(m_PneumaticButton);
     }
 
     // Called when the command is initially scheduled.
@@ -28,30 +29,24 @@ public class Combine extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // If the X button is pressed on the auxController
-        if (auxController.getXButtonPressed()) {
-            m_Combine.combineStart();
-            System.out.println("Combine started!");
+        if (auxController.getYButtonPressed()) {
+            m_PneumaticButton.extend();
+            System.out.println("Pneumatic Button Press extended!");
         } else {
-            m_Combine.combineStop();
-            System.out.println("Combine stopped!");
+            m_PneumaticButton.retract();
+            System.out.println("Pneumatic Button Press retracted!");
         }
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        m_Combine.combineStop();
+        m_PneumaticButton.retract();
     }
 
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return false;
-    }
-
-    @Override
-    public boolean runsWhenDisabled() {
         return false;
     }
 }
