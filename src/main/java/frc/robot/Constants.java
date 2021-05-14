@@ -40,9 +40,8 @@ public class Constants {
     public static final double combineLimit = 0.2;
 
     // PNEUMATICS PORTS
-    public static final int airCompressorPort = 0;
-    public static final int buttonrSolenoidPort = 1;
-    public static final int rampSolenoidPort = 2;
+    public static final int buttonrSolenoidPort = 2;
+    public static final int rampSolenoidPort = 3;
 
     // CONTROLLER PORTS
     public static final int driverControllerPort = 0;

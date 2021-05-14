@@ -7,13 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.AirCompressor;
 import frc.robot.subsystems.RampSystem;
 
 public class Ramp extends CommandBase {
 
     private final RampSystem m_RampSystem;
-    private final AirCompressor m_AirCompressor = new AirCompressor();
 
     private XboxController auxController = new XboxController(Constants.auxControllerPort);
 
@@ -27,7 +25,6 @@ public class Ramp extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_AirCompressor.startAirCompressor();
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -44,7 +41,6 @@ public class Ramp extends CommandBase {
     @Override
     public void end(boolean interrupted) {
         m_RampSystem.retract();
-        m_AirCompressor.stopAirCompressor();
     }
 
     // Returns true when the command should end.
