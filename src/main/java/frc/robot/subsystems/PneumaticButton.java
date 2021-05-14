@@ -5,17 +5,21 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.SolenoidBase;
 
 public class PneumaticButton extends SubsystemBase {
 
     private Solenoid buttonSol;
+    private Compressor airComp;
 
     /** Creates a new PneumaticButton. */
     public PneumaticButton() {
         buttonSol = new Solenoid(1);
         addChild("ButtonSol", buttonSol);
+
+        airComp = new Compressor(0);
+        addChild("AirComp", airComp);
     }
 
     @Override

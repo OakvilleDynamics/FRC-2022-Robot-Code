@@ -29,6 +29,8 @@ public class RobotContainer {
 
     // The robot's subsystems
     public final Drivetrain m_drivetrain = new Drivetrain();
+    public final CombineSystem m_combine = new CombineSystem();
+    public final PneumaticButton m_button = new PneumaticButton();
 
     // A chooser for autonomous commands
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -48,9 +50,10 @@ public class RobotContainer {
 
         // Configure default commands
         m_drivetrain.setDefaultCommand(new TankDrive(m_drivetrain));
+        m_combine.setDefaultCommand(new Combine(m_combine));
+        m_button.setDefaultCommand(new ButtonPress(m_button));
 
         // Configure autonomous sendable chooser
-
         m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
 
         SmartDashboard.putData("Auto Mode", m_chooser);
