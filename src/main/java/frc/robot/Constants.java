@@ -33,11 +33,11 @@ public class Constants {
     public static final int leftRearMotorPort = 2;
     public static final int rightFrontMotorPort = 3;
     public static final int rightRearMotorPort = 4;
-    public static final int combineMotorPort = 5;
+    public static final int combineMotorPort = 6;
 
     // POWER LIMITER (0.0 - 1.0)
     public static final double powerLimit = 0.4;
-    public static final double combineLimit = 0.2;
+    public static final double combineLimit = -0.25;
 
     // PNEUMATICS PORTS
     public static final int buttonrSolenoidPort = 2;

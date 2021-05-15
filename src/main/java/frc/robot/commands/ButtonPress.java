@@ -30,8 +30,9 @@ public class ButtonPress extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (auxController.getYButtonPressed()) {
+        if (auxController.getYButton()) {
             m_PneumaticButton.extend();
+            System.out.println("YButton Pressed");
         } else {
             m_PneumaticButton.retract();
         }

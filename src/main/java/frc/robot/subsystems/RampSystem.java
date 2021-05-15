@@ -37,4 +37,9 @@ public class RampSystem extends SubsystemBase {
         rampSol.set(false);
         System.out.println("Pneumatic Ramp retracted!");
     }
+
+    public void rampTest() {
+        System.out.println(rampSol.get());
+    }
+
 }

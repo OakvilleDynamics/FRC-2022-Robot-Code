@@ -24,6 +24,8 @@ public class TankDrive extends CommandBase {
 
     private XboxController driverController = new XboxController(Constants.driverControllerPort);
 
+    // private double leftStick = 0.0;
+    // private double rightStick = 0.0;
     // Creates a new TankDrive
     public TankDrive(Drivetrain subsystem) {
         m_drivetrain = subsystem;
@@ -39,6 +41,47 @@ public class TankDrive extends CommandBase {
     @Override
     public void execute() {
         // Runs a drive command on the driverController
+
+        // if (driverController.getY(Hand.kLeft) >= 0.01 ){
+        // leftStick = 0.2;
+        // }
+        // if (driverController.getY(Hand.kLeft) == 0 ){
+        // leftStick = 0;
+        // }
+        // if (driverController.getY(Hand.kLeft) >= 0.9 ){
+        // leftStick = 0.3;
+        // }
+
+        // if (driverController.getY(Hand.kRight) >= 0.01 ){
+        // leftStick = 0.2;
+        // }
+        // if (driverController.getY(Hand.kRight) == 0 ){
+        // leftStick = 0;
+        // }
+        // if (driverController.getY(Hand.kRight) >= 0.9 ){
+        // leftStick = 0.3;
+        // }
+
+        // if (driverController.getY(Hand.kLeft) >= -0.01 ){
+        // leftStick = -0.2;
+        // }
+        // if (driverController.getY(Hand.kLeft) == -0 ){
+        // leftStick = -0;
+        // }
+        // if (driverController.getY(Hand.kLeft) >= -0.9 ){
+        // leftStick = -0.3;
+        // }
+
+        // if (driverController.getY(Hand.kRight) >= -0.01 ){
+        // leftStick = -0.2;
+        // }
+        // if (driverController.getY(Hand.kRight) == -0 ){
+        // leftStick = -0;
+        // }
+        // if (driverController.getY(Hand.kRight) >= -0.9 ){
+        // leftStick = -0.3;
+        // }
+
         m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));

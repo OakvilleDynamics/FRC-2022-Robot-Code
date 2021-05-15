@@ -30,11 +30,13 @@ public class Ramp extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (auxController.getAButtonPressed()) {
+        if (auxController.getAButton()) {
             m_RampSystem.extend();
         } else {
             m_RampSystem.retract();
         }
+
+        m_RampSystem.rampTest();
     }
 
     // Called once the command ends or is interrupted.

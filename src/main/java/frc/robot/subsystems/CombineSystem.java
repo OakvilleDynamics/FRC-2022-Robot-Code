@@ -43,4 +43,13 @@ public class CombineSystem extends SubsystemBase {
         combineMotor.stopMotor();
         System.out.println("Combine stopped!");
     }
+
+    public void combineTest() {
+        System.out.println("Combine should be working");
+    }
+
+    public void rampTestOff() {
+        System.out.println("CombineSystem ended - was that supposed to happen");
+    }
+
 }
