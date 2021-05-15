@@ -40,14 +40,15 @@ public class Combine extends CommandBase {
         // }
 
         if (combineOn = false) {
-            if (auxController.getXButtonPressed())
-                ;
-            {
+            if (auxController.getXButtonPressed()) {
                 m_Combine.combineStart();
                 combineOn = true;
             }
         } else if (combineOn = true) {
-            m_Combine.combineStop();
+          if (auxController.getXButtonPressed()) {
+              m_Combine.combineStop();
+              combineOn = false;
+          }
         }
     }
 

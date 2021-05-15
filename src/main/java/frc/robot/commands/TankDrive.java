@@ -10,12 +10,10 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.RobotContainer;
-
 import frc.robot.subsystems.Drivetrain;
 
 public class TankDrive extends CommandBase {
@@ -24,8 +22,11 @@ public class TankDrive extends CommandBase {
 
     private XboxController driverController = new XboxController(Constants.driverControllerPort);
 
-    // private double leftStick = 0.0;
-    // private double rightStick = 0.0;
+    private double leftStick = 0.0;
+    private double rightStick = 0.0;
+
+    private boolean timerOn = false;
+
     // Creates a new TankDrive
     public TankDrive(Drivetrain subsystem) {
         m_drivetrain = subsystem;
@@ -42,55 +43,74 @@ public class TankDrive extends CommandBase {
     public void execute() {
         // Runs a drive command on the driverController
 
-        // if (driverController.getY(Hand.kLeft) >= 0.01 ){
-        // leftStick = 0.2;
-        // }
-        // if (driverController.getY(Hand.kLeft) == 0 ){
-        // leftStick = 0;
-        // }
-        // if (driverController.getY(Hand.kLeft) >= 0.9 ){
-        // leftStick = 0.3;
-        // }
+        if (driverController.getY(Hand.kLeft) >= 0.1 ){
+        leftStick = Constants.slowSpeed;
+        }
 
-        // if (driverController.getY(Hand.kRight) >= 0.01 ){
-        // leftStick = 0.2;
-        // }
-        // if (driverController.getY(Hand.kRight) == 0 ){
-        // leftStick = 0;
-        // }
-        // if (driverController.getY(Hand.kRight) >= 0.9 ){
-        // leftStick = 0.3;
-        // }
+        if (driverController.getY(Hand.kLeft) >= 0.9 ){
+        leftStick = Constants.fastSpeed;
+        }
 
-        // if (driverController.getY(Hand.kLeft) >= -0.01 ){
-        // leftStick = -0.2;
-        // }
-        // if (driverController.getY(Hand.kLeft) == -0 ){
-        // leftStick = -0;
-        // }
-        // if (driverController.getY(Hand.kLeft) >= -0.9 ){
-        // leftStick = -0.3;
-        // }
+        if (driverController.getY(Hand.kRight) >= 0.1 ){
+        leftStick = Constants.slowSpeed;
+        }
 
-        // if (driverController.getY(Hand.kRight) >= -0.01 ){
-        // leftStick = -0.2;
-        // }
-        // if (driverController.getY(Hand.kRight) == -0 ){
-        // leftStick = -0;
-        // }
-        // if (driverController.getY(Hand.kRight) >= -0.9 ){
-        // leftStick = -0.3;
-        // }
+        if (driverController.getY(Hand.kRight) >= 0.9 ){
+        leftStick = Constants.fastSpeed;
+        }
 
-        m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
+        if (driverController.getY(Hand.kLeft) >= -0.01 ){
+        leftStick = -Constants.slowSpeed;
+        }
+        
+        if (driverController.getY(Hand.kLeft) <= -0.9 ){
+        leftStick = -Constants.fastSpeed;
+        }
+
+        if (driverController.getY(Hand.kRight) <= -0.1 ){
+        leftStick = -Constants.slowSpeed;
+        }
+
+        if (driverController.getY(Hand.kRight) <= -0.9 ){
+        leftStick = -Constants.fastSpeed;
+        }
+
+        if (driverController.getY(Hand.kLeft) >= -0.1  ){
+            if (driverController.getY(Hand.kLeft) <= 0.1) {
+                leftStick = 0;
+            }
+        }
+
+        if (driverController.getY(Hand.kRight) >= -0.1  ){
+            if (driverController.getY(Hand.kRight) <= 0.1) {
+                rightStick = 0;
+            }
+        }
+       // m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
+        m_drivetrain.drive(leftStick, rightStick);
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));
+
+        if(driverController.getStartButtonPressed()){
+         m_drivetrain.startTimer();
+         timerOn = true;
+         m_drivetrain.drive(0.2, 0.2);
+        }
+
+        if(timerOn = true){
+            if(m_drivetrain.checkTimer() >= Constants.autoTimerSeconds){
+                m_drivetrain.stopTimer();
+                timerOn = false;
+            }
+        }
+
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
         m_drivetrain.drive(0.0, 0.0);
+        System.out.println("TankDrive interrupted");
     }
 
     // Returns true when the command should end.

@@ -17,7 +17,6 @@ public class Ramp extends CommandBase {
 
     /** Creates a new Ramp. */
     public Ramp(RampSystem subsystem) {
-        // Use addRequirements() here to declare subsystem dependencies.
         m_RampSystem = subsystem;
         addRequirements(m_RampSystem);
     }

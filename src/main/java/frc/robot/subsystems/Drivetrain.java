@@ -19,6 +19,7 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 
@@ -32,6 +33,7 @@ public class Drivetrain extends SubsystemBase {
     private PWMTalonSRX rightRear;
     private SpeedControllerGroup rightMotor;
     private DifferentialDrive drive;
+    private Timer timer;
 
     public Drivetrain() {
 
@@ -66,6 +68,9 @@ public class Drivetrain extends SubsystemBase {
         // To change the max power, you need to change it in the Constants.java file
         drive.setMaxOutput(Constants.powerLimit);
 
+        timer = new Timer();
+
+
     }
 
     @Override
@@ -85,5 +90,17 @@ public class Drivetrain extends SubsystemBase {
 
     public void drive(double left, double right) {
         drive.tankDrive(left, right);
+    }
+
+    public void startTimer(){
+        timer.start();
+    }
+
+    public void stopTimer(){
+        timer.stop();
+    }
+
+    public double checkTimer() {
+       return timer.get();
     }
 }

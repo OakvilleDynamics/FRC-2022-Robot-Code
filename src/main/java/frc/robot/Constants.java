@@ -38,6 +38,8 @@ public class Constants {
     // POWER LIMITER (0.0 - 1.0)
     public static final double powerLimit = 0.4;
     public static final double combineLimit = -0.25;
+    public static final double slowSpeed = 0.2;
+    public static final double fastSpeed = 0.4;
 
     // PNEUMATICS PORTS
     public static final int buttonrSolenoidPort = 2;
@@ -46,4 +48,8 @@ public class Constants {
     // CONTROLLER PORTS
     public static final int driverControllerPort = 0;
     public static final int auxControllerPort = 1;
+
+    // AUTONOMY TIMER
+    public static final int autoTimerSeconds = 3;
+
 }
