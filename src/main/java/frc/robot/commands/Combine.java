@@ -32,24 +32,28 @@ public class Combine extends CommandBase {
     @Override
     public void execute() {
         // If the X button is pressed on the auxController
-        // if (auxController.getXButton()) {
-        // m_Combine.combineStart();
-        // System.out.println("XButton Pressed");
-        // } else {
-        // m_Combine.combineStop();
-        // }
-
-        if (combineOn = false) {
-            if (auxController.getXButtonPressed()) {
-                m_Combine.combineStart();
-                combineOn = true;
-            }
-        } else if (combineOn = true) {
-          if (auxController.getXButtonPressed()) {
-              m_Combine.combineStop();
-              combineOn = false;
-          }
+        if (auxController.getXButton()) {
+            m_Combine.combineStart();
+            System.out.println("XButton Pressed");
+        } else if (auxController.getBButton()) {
+            m_Combine.combineStartR();
+            System.out.println("BButton Pressed");
+        } else {
+            System.out.println("combine stopped");
+            m_Combine.combineStop();
         }
+
+        // if (combineOn = false) {
+        // if (auxController.getXButtonPressed()) {
+        // m_Combine.combineStart();
+        // combineOn = true;
+        // }
+        // } else if (combineOn = true) {
+        // if (auxController.getXButtonPressed()) {
+        // m_Combine.combineStop();
+        // combineOn = false;
+        // }
+        // }
     }
 
     // Called once the command ends or is interrupted.

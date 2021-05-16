@@ -44,6 +44,11 @@ public class CombineSystem extends SubsystemBase {
         System.out.println("Combine stopped!");
     }
 
+    public void combineStartR() {
+        combineMotor.set(-Constants.combineLimit);
+        System.out.println("Combine started!");
+    }
+
     public void combineTest() {
         System.out.println("Combine should be working");
     }
