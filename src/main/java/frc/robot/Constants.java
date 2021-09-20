@@ -21,12 +21,6 @@ package frc.robot;
  * wherever the constants are needed, to reduce verbosity.
  */
 public class Constants {
-    /**
-     * public static final class DriveConstants { public static final int
-     * kLeftMotor1Port = 0; public static final int kLeftMotor2Port = 1; public
-     * static final int kRightMotor1Port = 2; public static final int
-     * kRightMotor2Port = 3; }
-     */
 
     // MOTOR PORTS
     public static final int leftFrontMotorPort = 1;
@@ -40,6 +34,7 @@ public class Constants {
     public static final double combineLimit = -0.45;
     public static final double slowSpeed = 0.3;
     public static final double fastSpeed = 0.4;
+    public static final double partyModeLimit = 1.0;
 
     // PNEUMATICS PORTS
     public static final int buttonrSolenoidPort = 2;

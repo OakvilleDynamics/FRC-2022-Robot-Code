@@ -22,8 +22,8 @@ public class TankDrive extends CommandBase {
 
     private XboxController driverController = new XboxController(Constants.driverControllerPort);
 
-     //private double leftStick = 0.0;
-     //private double rightStick = 0.0;
+    // private double leftStick = 0.0;
+    // private double rightStick = 0.0;
 
     private boolean timerOn = false;
 
@@ -39,7 +39,7 @@ public class TankDrive extends CommandBase {
         m_drivetrain.startTimer();
         timerOn = true;
         System.out.println("timer started lets gooo");
-    //    m_drivetrain.drive(0.3, 0.3);
+        // m_drivetrain.drive(0.3, 0.3);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
@@ -47,27 +47,28 @@ public class TankDrive extends CommandBase {
     public void execute() {
         // Runs a drive command on the driverController
 
-    //    m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
-        
-        // m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft));
-        // m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight));
-        m_drivetrain.drive(m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft)), m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight)));
+        m_drivetrain.drive(m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft)),
+                m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight)));
 
-
-      //  m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
-        // m_drivetrain.drive(leftStick, rightStick);
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));
 
-        if(driverController.getStartButton()){
-         m_drivetrain.startTimer();
-         timerOn = true;
-         System.out.println("timer started lets gooo");
-      //   m_drivetrain.drive(0.3, 0.3);
+        if (driverController.getStartButton()) {
+            m_drivetrain.startTimer();
+            timerOn = true;
+            System.out.println("timer started lets gooo");
+            // m_drivetrain.drive(0.3, 0.3);
         }
 
-        if(timerOn = true){
-            if(m_drivetrain.checkTimer() >= Constants.autoTimerSeconds){
+        if (driverController.getBumper(Hand.kRight)){
+            m_drivetrain.setPartyMode(true);
+        }
+        else if (driverController.getBumper(Hand.kLeft)){
+            m_drivetrain.setPartyMode(false);
+        }
+
+        if (timerOn = true) {
+            if (m_drivetrain.checkTimer() >= Constants.autoTimerSeconds) {
                 m_drivetrain.stopTimer();
                 timerOn = false;
             }
@@ -75,11 +76,10 @@ public class TankDrive extends CommandBase {
 
     }
 
-
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-  //      m_drivetrain.drive(0.0, 0.0);
+        // m_drivetrain.drive(0.0, 0.0);
         System.out.println("TankDrive interrupted");
     }
 

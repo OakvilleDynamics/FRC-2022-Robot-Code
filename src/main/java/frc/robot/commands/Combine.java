@@ -42,18 +42,6 @@ public class Combine extends CommandBase {
             System.out.println("combine stopped");
             m_Combine.combineStop();
         }
-
-        // if (combineOn = false) {
-        // if (auxController.getXButtonPressed()) {
-        // m_Combine.combineStart();
-        // combineOn = true;
-        // }
-        // } else if (combineOn = true) {
-        // if (auxController.getXButtonPressed()) {
-        // m_Combine.combineStop();
-        // combineOn = false;
-        // }
-        // }
     }
 
     // Called once the command ends or is interrupted.
