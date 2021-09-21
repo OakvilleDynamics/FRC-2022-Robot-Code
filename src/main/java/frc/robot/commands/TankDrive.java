@@ -20,10 +20,7 @@ public class TankDrive extends CommandBase {
 
     private final Drivetrain m_drivetrain;
 
-    private XboxController driverController = new XboxController(Constants.driverControllerPort);
-
-    // private double leftStick = 0.0;
-    // private double rightStick = 0.0;
+    private final XboxController driverController = new XboxController(Constants.driverControllerPort);
 
     private boolean timerOn = false;
 
@@ -56,18 +53,23 @@ public class TankDrive extends CommandBase {
         if (driverController.getStartButton()) {
             m_drivetrain.startTimer();
             timerOn = true;
-            System.out.println("timer started lets gooo");
-            // m_drivetrain.drive(0.3, 0.3);
+            System.out.println("TIMER STARTED");
         }
 
-        if (driverController.getBumper(Hand.kRight)){
-            m_drivetrain.setPartyMode(true);
-        }
-        else if (driverController.getBumper(Hand.kLeft)){
-            m_drivetrain.setPartyMode(false);
+        if (driverController.getBumper(Hand.kRight)) {
+            m_drivetrain.setPartyMode(!m_drivetrain.getPartyMode());
+            System.out.println(m_drivetrain.getPartyMode() ? "PARTY MODE IS ENABLED" : "PARTY MODE IS DISABLED");
         }
 
-        if (timerOn = true) {
+        if (driverController.getAButton()) {
+            if (m_drivetrain.getPartyMode()) {
+                m_drivetrain.drive(Constants.partyModeLimit, Constants.partyModeLimit);
+            } else {
+                System.out.println("PARTY MODE IS NOT ACTIVATED, PRESS THE RIGHT BUMPER TO ACTIVATE");
+            }
+        }
+
+        if (timerOn) {
             if (m_drivetrain.checkTimer() >= Constants.autoTimerSeconds) {
                 m_drivetrain.stopTimer();
                 timerOn = false;

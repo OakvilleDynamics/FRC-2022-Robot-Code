@@ -10,7 +10,7 @@ import frc.robot.Constants;
 
 public class RampSystem extends SubsystemBase {
 
-    private Solenoid rampSol;
+    private final Solenoid rampSol;
 
     /** Creates a new RampSystem. */
     public RampSystem() {

@@ -4,15 +4,17 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class PneumaticButton extends SubsystemBase {
 
-    private Solenoid buttonSol;
+    private final Solenoid buttonSol;
 
-    /** Creates a new PneumaticButton. */
+    /**
+     * Creates a new PneumaticButton.
+     */
     public PneumaticButton() {
         buttonSol = new Solenoid(Constants.buttonrSolenoidPort);
         addChild("ButtonSol", buttonSol);
@@ -32,7 +34,7 @@ public class PneumaticButton extends SubsystemBase {
         System.out.println("Pneumatic Button Press extended!");
     }
 
-    // Retracts the soleniod for the button press
+    // Retracts the solenoid for the button press
     public void retract() {
         buttonSol.set(false);
         System.out.println("Pneumatic Button Press retracted!");

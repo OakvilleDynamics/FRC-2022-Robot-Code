@@ -13,7 +13,7 @@ public class Ramp extends CommandBase {
 
     private final RampSystem m_RampSystem;
 
-    private XboxController auxController = new XboxController(Constants.auxControllerPort);
+    private final XboxController auxController = new XboxController(Constants.auxControllerPort);
 
     /** Creates a new Ramp. */
     public Ramp(RampSystem subsystem) {

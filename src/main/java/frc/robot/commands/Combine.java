@@ -13,8 +13,8 @@ import frc.robot.subsystems.CombineSystem;
 public class Combine extends CommandBase {
     private final CombineSystem m_Combine;
 
-    private XboxController auxController = new XboxController(Constants.auxControllerPort);
-    private boolean combineOn = false;
+    private final XboxController auxController = new XboxController(Constants.auxControllerPort);
+    private final boolean combineOn = false;
 
     // Creates a new Combine.
     public Combine(CombineSystem subsystem) {

@@ -13,7 +13,7 @@ public class ButtonPress extends CommandBase {
 
     private final PneumaticButton m_PneumaticButton;
 
-    private XboxController auxController = new XboxController(Constants.auxControllerPort);
+    private final XboxController auxController = new XboxController(Constants.auxControllerPort);
 
     /** Creates a new ButtonPress. */
     public ButtonPress(PneumaticButton subsystem) {

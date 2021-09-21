@@ -10,9 +10,11 @@ import frc.robot.Constants;
 
 public class CombineSystem extends SubsystemBase {
 
-    private PWMTalonSRX combineMotor;
+    private final PWMTalonSRX combineMotor;
 
-    /** Creates a new Combine. */
+    /**
+     * Creates a new Combine.
+     */
     public CombineSystem() {
         combineMotor = new PWMTalonSRX(Constants.combineMotorPort);
         addChild("CombineMotor", combineMotor);

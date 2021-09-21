@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
 
-    private static RobotContainer m_robotContainer = new RobotContainer();
+    private static final RobotContainer m_robotContainer = new RobotContainer();
 
     // The robot's subsystems
     public final Drivetrain m_drivetrain = new Drivetrain();
