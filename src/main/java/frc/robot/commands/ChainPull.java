@@ -8,9 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ChainPull extends CommandBase {
   /** Creates a new ChainPull. */
-  public ChainPull() {
-    
-  }
+  public ChainPull() {}
 
   // Called when the command is initially scheduled.
   @Override

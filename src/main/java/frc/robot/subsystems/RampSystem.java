@@ -10,36 +10,35 @@ import frc.robot.Constants;
 
 public class RampSystem extends SubsystemBase {
 
-    private final Solenoid rampSol;
+  private final Solenoid rampSol;
 
-    /** Creates a new RampSystem. */
-    public RampSystem() {
-        rampSol = new Solenoid(Constants.rampSolenoidPort);
-        addChild("RampSol", rampSol);
-    }
+  /** Creates a new RampSystem. */
+  public RampSystem() {
+    rampSol = new Solenoid(Constants.rampSolenoidPort);
+    addChild("RampSol", rampSol);
+  }
 
-    @Override
-    public void periodic() {
-        // This method will be called once per scheduler run
-    }
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-    // Extends the solenoid for the ramp ramp
-    public void extend() {
-        rampSol.set(true);
-        System.out.println("Pneumatic Ramp extended!");
-    }
+  // Extends the solenoid for the ramp ramp
+  public void extend() {
+    rampSol.set(true);
+    System.out.println("Pneumatic Ramp extended!");
+  }
 
-    // Retracts the soleniod for the ramp
-    public void retract() {
-        rampSol.set(false);
-        System.out.println("Pneumatic Ramp retracted!");
-    }
+  // Retracts the soleniod for the ramp
+  public void retract() {
+    rampSol.set(false);
+    System.out.println("Pneumatic Ramp retracted!");
+  }
 
-    public void rampTest() {
-        System.out.println(rampSol.get());
-    }
-
+  public void rampTest() {
+    System.out.println(rampSol.get());
+  }
 }

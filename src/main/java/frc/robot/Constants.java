@@ -11,40 +11,37 @@
 package frc.robot;
 
 /**
- * The Constants class provides a convenient place for teams to hold robot-wide
- * numerical or boolean constants. This class should not be used for any other
- * purpose. All constants should be declared globally (i.e. public static). Do
- * not put anything functional in this class.
+ * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
+ * constants. This class should not be used for any other purpose. All constants should be declared
+ * globally (i.e. public static). Do not put anything functional in this class.
  *
- * <p>
- * It is advised to statically import this class (or one of its inner classes)
- * wherever the constants are needed, to reduce verbosity.
+ * <p>It is advised to statically import this class (or one of its inner classes) wherever the
+ * constants are needed, to reduce verbosity.
  */
 public class Constants {
 
-    // MOTOR PORTS
-    public static final int leftFrontMotorPort = 1;
-    public static final int leftRearMotorPort = 2;
-    public static final int rightFrontMotorPort = 3;
-    public static final int rightRearMotorPort = 4;
-    public static final int combineMotorPort = 6;
+  // MOTOR PORTS
+  public static final int leftFrontMotorPort = 1;
+  public static final int leftRearMotorPort = 2;
+  public static final int rightFrontMotorPort = 3;
+  public static final int rightRearMotorPort = 4;
+  public static final int combineMotorPort = 6;
 
-    // POWER LIMITER (0.0 - 1.0)
-    public static final double powerLimit = 0.4;
-    public static final double combineLimit = -0.45;
-    public static final double slowSpeed = 0.3;
-    public static final double fastSpeed = 0.4;
-    public static final double partyModeLimit = 1.0;
+  // POWER LIMITER (0.0 - 1.0)
+  public static final double powerLimit = 0.4;
+  public static final double combineLimit = -0.45;
+  public static final double slowSpeed = 0.3;
+  public static final double fastSpeed = 0.4;
+  public static final double partyModeLimit = 1.0;
 
-    // PNEUMATICS PORTS
-    public static final int buttonrSolenoidPort = 2;
-    public static final int rampSolenoidPort = 3;
+  // PNEUMATICS PORTS
+  public static final int buttonrSolenoidPort = 2;
+  public static final int rampSolenoidPort = 3;
 
-    // CONTROLLER PORTS
-    public static final int driverControllerPort = 0;
-    public static final int auxControllerPort = 1;
+  // CONTROLLER PORTS
+  public static final int driverControllerPort = 0;
+  public static final int auxControllerPort = 1;
 
-    // AUTONOMY TIMER
-    public static final int autoTimerSeconds = 3;
-
+  // AUTONOMY TIMER
+  public static final int autoTimerSeconds = 3;
 }

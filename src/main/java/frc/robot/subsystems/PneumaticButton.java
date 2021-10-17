@@ -10,33 +10,31 @@ import frc.robot.Constants;
 
 public class PneumaticButton extends SubsystemBase {
 
-    private final Solenoid buttonSol;
+  private final Solenoid buttonSol;
 
-    /**
-     * Creates a new PneumaticButton.
-     */
-    public PneumaticButton() {
-        buttonSol = new Solenoid(Constants.buttonrSolenoidPort);
-        addChild("ButtonSol", buttonSol);
-    }
+  /** Creates a new PneumaticButton. */
+  public PneumaticButton() {
+    buttonSol = new Solenoid(Constants.buttonrSolenoidPort);
+    addChild("ButtonSol", buttonSol);
+  }
 
-    @Override
-    public void periodic() {
-        // This method will be called once per scheduler run
-    }
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
 
-    // Extends the solenoid for the button press
-    public void extend() {
-        buttonSol.set(true);
-        System.out.println("Pneumatic Button Press extended!");
-    }
+  // Extends the solenoid for the button press
+  public void extend() {
+    buttonSol.set(true);
+    System.out.println("Pneumatic Button Press extended!");
+  }
 
-    // Retracts the solenoid for the button press
-    public void retract() {
-        buttonSol.set(false);
-        System.out.println("Pneumatic Button Press retracted!");
-    }
+  // Retracts the solenoid for the button press
+  public void retract() {
+    buttonSol.set(false);
+    System.out.println("Pneumatic Button Press retracted!");
+  }
 }
