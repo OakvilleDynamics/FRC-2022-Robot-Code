@@ -1,3 +1,7 @@
+name: Code Quality
+
+on: [push, pull_request]
+
 jobs:
   qodana:
     runs-on: ubuntu-latest
