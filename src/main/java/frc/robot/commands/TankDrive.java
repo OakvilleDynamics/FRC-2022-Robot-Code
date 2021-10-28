@@ -51,10 +51,10 @@ public class TankDrive extends CommandBase {
         
         // m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft));
         // m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight));
-        m_drivetrain.drive(m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft)), m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight)));
+        // m_drivetrain.drive(m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft)), m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight)));
 
 
-      //  m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
+        m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
         // m_drivetrain.drive(leftStick, rightStick);
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));
