@@ -31,7 +31,7 @@ public class Combine extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // If the X button is pressed on the auxController
+        // If the X button is pressed on the auxController combine starts, B pressed it reverses
         if (auxController.getXButton()) {
             m_Combine.combineStart();
             System.out.println("XButton Pressed");
@@ -42,18 +42,6 @@ public class Combine extends CommandBase {
             System.out.println("combine stopped");
             m_Combine.combineStop();
         }
-
-        // if (combineOn = false) {
-        // if (auxController.getXButtonPressed()) {
-        // m_Combine.combineStart();
-        // combineOn = true;
-        // }
-        // } else if (combineOn = true) {
-        // if (auxController.getXButtonPressed()) {
-        // m_Combine.combineStop();
-        // combineOn = false;
-        // }
-        // }
     }
 
     // Called once the command ends or is interrupted.

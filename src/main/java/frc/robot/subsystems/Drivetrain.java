@@ -89,43 +89,8 @@ public class Drivetrain extends SubsystemBase {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
+    // Drive method for driving
     public void drive(double left, double right) {
-
-        // if (Math.abs(left) >= 0.1) {
-        //     if (Math.abs(right) >= 0.9) {
-        //         left = Constants.fastSpeed;
-        //     } else {
-        //         left = Constants.slowSpeed;
-        //     }
-        // }
-
-        // if (Math.abs(right) >= 0.1) {
-        //     if (Math.abs(right) >= 0.9) {
-        //         right = Constants.fastSpeed;
-        //     } else {
-        //         right = Constants.slowSpeed;
-        //     }
-        // }
-
-        // if (!(left < 0.1) && left > -0.1) {
-        //     left = 0;
-        // }
-
-        // if (right < 0.1 && right > -0.1) {
-        //     right = 0;
-        // }
-
-        // if (left < 0) {
-        //     left *= -1;
-        // }
-
-        // if (right < 0) {
-        //     right *= -1;
-        // }
-     
-
-    
-
 
         System.out.println(left);
         System.out.println(right);
@@ -133,48 +98,6 @@ public class Drivetrain extends SubsystemBase {
         drive.tankDrive(left, right); 
         
     }
-
-    // public double leftDriveStick(double left) 
-    // {
-    //   if (Math.abs(left) >= 0.1) {
-    //       if (Math.abs(left) >= 0.9) {
-    //           if (left < 0) {
-    //               leftAmount = -Constants.fastSpeed;
-    //           } else {
-    //               leftAmount = Constants.fastSpeed;
-    //           }
-    //       } else if (left < 0) {
-    //           leftAmount = -Constants.slowSpeed;
-    //       } else {
-    //           leftAmount = Constants.slowSpeed;
-    //       }
-    //   } else {
-    //       leftAmount = 0;
-    //   }
-    //   return leftAmount;
-    // }
-
-    // public double rightDriveStick(double right) 
-    // {
-    //   if (Math.abs(right) >= 0.1) {
-    //       if (Math.abs(right) >= 0.9) {
-    //           if (right < 0) {
-    //               rightAmount = -Constants.fastSpeed;
-    //           } else {
-    //               rightAmount = Constants.fastSpeed;
-    //           }
-    //       } else if (right < 0) {
-    //           rightAmount = -Constants.slowSpeed;
-    //       } else {
-    //           rightAmount = Constants.slowSpeed;
-    //       }
-    //   } else {
-    //     rightAmount = 0;
-    //   }
-    //   return rightAmount;
-    // }
-
-
 
     public double Test(double test) {
         return 0;

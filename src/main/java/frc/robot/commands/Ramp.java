@@ -28,6 +28,7 @@ public class Ramp extends CommandBase {
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
+    // Ramp extends if A is pressed and stays still if its not
     public void execute() {
         if (auxController.getAButton()) {
             m_RampSystem.extend();

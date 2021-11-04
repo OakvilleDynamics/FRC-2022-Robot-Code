@@ -54,7 +54,7 @@ public class CombineSystem extends SubsystemBase {
     }
 
     public void rampTestOff() {
-        System.out.println("CombineSystem ended - was that supposed to happen");
+        System.out.println("CombineSystem Interrupted ");
     }
 
 }

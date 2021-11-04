@@ -22,11 +22,6 @@ public class TankDrive extends CommandBase {
 
     private XboxController driverController = new XboxController(Constants.driverControllerPort);
 
-     //private double leftStick = 0.0;
-     //private double rightStick = 0.0;
-
-    private boolean timerOn = false;
-
     // Creates a new TankDrive
     public TankDrive(Drivetrain subsystem) {
         m_drivetrain = subsystem;
@@ -36,49 +31,22 @@ public class TankDrive extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_drivetrain.startTimer();
-        timerOn = true;
-        System.out.println("timer started lets gooo");
-    //    m_drivetrain.drive(0.3, 0.3);
-    }
+    } 
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // Runs a drive command on the driverController
 
-    //    m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
-        
-        // m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft));
-        // m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight));
-        // m_drivetrain.drive(m_drivetrain.leftDriveStick(driverController.getY(Hand.kLeft)), m_drivetrain.rightDriveStick(driverController.getY(Hand.kRight)));
-
-
+        // Calls the drive method and uses the drivercontroller hands
         m_drivetrain.drive(driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
-        // m_drivetrain.drive(leftStick, rightStick);
         System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
         System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));
 
-        if(driverController.getStartButton()){
-         m_drivetrain.startTimer();
-         timerOn = true;
-         System.out.println("timer started lets gooo");
-      //   m_drivetrain.drive(0.3, 0.3);
         }
-
-        if(timerOn = true){
-            if(m_drivetrain.checkTimer() >= Constants.autoTimerSeconds){
-                m_drivetrain.stopTimer();
-                timerOn = false;
-            }
-        }
-
-    }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-  //      m_drivetrain.drive(0.0, 0.0);
         System.out.println("TankDrive interrupted");
     }
 
