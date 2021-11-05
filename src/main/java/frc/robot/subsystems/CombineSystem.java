@@ -53,8 +53,7 @@ public class CombineSystem extends SubsystemBase {
     System.out.println("Combine should be working");
   }
 
-    public void rampTestOff() {
-        System.out.println("CombineSystem Interrupted ");
-    }
-
+  public void rampTestOff() {
+    System.out.println("CombineSystem Interrupted ");
+  }
 }

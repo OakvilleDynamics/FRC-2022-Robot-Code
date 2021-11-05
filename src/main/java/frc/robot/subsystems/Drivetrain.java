@@ -84,23 +84,22 @@ public class Drivetrain extends SubsystemBase {
 
   }
 
-    // Drive method for driving
-    public void drive(double left, double right) {
+  // Drive method for driving
+  public void drive(double left, double right) {
 
-        System.out.println(left);
-        System.out.println(right);
+    System.out.println(left);
+    System.out.println(right);
 
-        drive.tankDrive(left, right); 
-        
-    }
+    drive.tankDrive(left, right);
+  }
 
-    public double Test(double test) {
-        return 0;
-    }
-  
-    public void startTimer() {
-        timer.start();
-    }
+  public double Test(double test) {
+    return 0;
+  }
+
+  public void startTimer() {
+    timer.start();
+  }
 
   public double checkTimer() {
     return timer.get();
