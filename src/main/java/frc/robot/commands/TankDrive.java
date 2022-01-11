@@ -23,7 +23,7 @@ public class TankDrive extends CommandBase {
   private final XboxController driverController =
       new XboxController(Constants.driverControllerPort);
 
-  private boolean timerOn = false;
+  
 
   // Creates a new TankDrive
   public TankDrive(Drivetrain subsystem) {
@@ -34,11 +34,7 @@ public class TankDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_drivetrain.startTimer();
-    timerOn = true;
-    System.out.println("timer started lets gooo");
-    // m_drivetrain.drive(0.3, 0.3);
-  }
+  };
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -49,12 +45,6 @@ public class TankDrive extends CommandBase {
 
     System.out.println("LEFT driverController Y AXIS: " + driverController.getY(Hand.kLeft));
     System.out.println("RIGHT driverController Y AXIS: " + driverController.getY(Hand.kRight));
-
-    if (driverController.getStartButton()) {
-      m_drivetrain.startTimer();
-      timerOn = true;
-      System.out.println("TIMER STARTED");
-    }
 
     if (driverController.getBumper(Hand.kRight)) {
       m_drivetrain.setPartyMode(!m_drivetrain.getPartyMode());

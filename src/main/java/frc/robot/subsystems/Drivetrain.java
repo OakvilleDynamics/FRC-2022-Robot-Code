@@ -12,7 +12,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -25,7 +24,7 @@ public class Drivetrain extends SubsystemBase {
   private final PWMTalonSRX rightFront;
   private final PWMTalonSRX rightRear;
   private final DifferentialDrive drive;
-  private final Timer timer;
+
   public double leftAmount;
   public double rightAmount;
   public boolean partyMode = false;
@@ -69,7 +68,6 @@ public class Drivetrain extends SubsystemBase {
       drive.setMaxOutput(Constants.powerLimit);
     }
 
-    timer = new Timer();
   }
 
   @Override
@@ -95,14 +93,6 @@ public class Drivetrain extends SubsystemBase {
 
   public double Test(double test) {
     return 0;
-  }
-
-  public void startTimer() {
-    timer.start();
-  }
-
-  public double checkTimer() {
-    return timer.get();
   }
 
   public boolean getPartyMode() {
