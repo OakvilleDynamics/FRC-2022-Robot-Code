@@ -11,6 +11,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -37,13 +38,15 @@ public class Drivetrain extends SubsystemBase {
     leftFront = new PWMTalonSRX(Constants.leftFrontMotorPort);
     addChild("LeftFront", leftFront);
     leftFront.setInverted(false);
+    SpeedController leftFrontMotor = new SpeedController(leftFront){
+      
+    };
+    // SpeedControllerGroup rightMotor = new SpeedControllerGroup(rightFront, rightRear);
+    // addChild("LeftMotor", leftMotor)
 
     leftRear = new PWMTalonSRX(Constants.leftRearMotorPort);
     addChild("LeftRear", leftRear);
     leftRear.setInverted(false);
-
-    SpeedControllerGroup leftMotor = new SpeedControllerGroup(leftFront, leftRear);
-    addChild("LeftMotor", leftMotor);
 
     rightFront = new PWMTalonSRX(Constants.rightFrontMotorPort);
     addChild("RightFront", rightFront);
@@ -53,13 +56,12 @@ public class Drivetrain extends SubsystemBase {
     addChild("RightRear", rightRear);
     rightRear.setInverted(false);
 
-    SpeedControllerGroup rightMotor = new SpeedControllerGroup(rightFront, rightRear);
-    addChild("RightMotor", rightMotor);
-
     drive = new DifferentialDrive(leftMotor, rightMotor);
     addChild("Drive", drive);
     drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
+
+    drive = new MechanumDrive(left)
 
     // To change the max power, you need to change it in the Constants.java file
     if (partyMode) {
