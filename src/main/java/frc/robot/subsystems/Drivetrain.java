@@ -11,9 +11,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -24,13 +22,12 @@ public class Drivetrain extends SubsystemBase {
   private final PWMTalonSRX leftFront;
   private final PWMTalonSRX rightFront;
   private final PWMTalonSRX rightRear;
-  private final DifferentialDrive drive;
+  //  private final DifferentialDrive drive;
+  private final MecanumDrive drive;
 
   public double leftAmount;
   public double rightAmount;
   public boolean partyMode = false;
-  private SpeedControllerGroup leftMotor;
-  private SpeedControllerGroup rightMotor;
 
   public Drivetrain() {
 
@@ -38,11 +35,6 @@ public class Drivetrain extends SubsystemBase {
     leftFront = new PWMTalonSRX(Constants.leftFrontMotorPort);
     addChild("LeftFront", leftFront);
     leftFront.setInverted(false);
-    SpeedController leftFrontMotor = new SpeedController(leftFront){
-      
-    };
-    // SpeedControllerGroup rightMotor = new SpeedControllerGroup(rightFront, rightRear);
-    // addChild("LeftMotor", leftMotor)
 
     leftRear = new PWMTalonSRX(Constants.leftRearMotorPort);
     addChild("LeftRear", leftRear);
@@ -56,20 +48,17 @@ public class Drivetrain extends SubsystemBase {
     addChild("RightRear", rightRear);
     rightRear.setInverted(false);
 
-    drive = new DifferentialDrive(leftMotor, rightMotor);
+    drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     addChild("Drive", drive);
     drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
 
-    drive = new MechanumDrive(left)
-
     // To change the max power, you need to change it in the Constants.java file
-    if (partyMode) {
-      drive.setMaxOutput(Constants.partyModeLimit);
-    } else {
-      drive.setMaxOutput(Constants.powerLimit);
-    }
-
+    // if (partyMode) {
+    //   drive.setMaxOutput(Constants.partyModeLimit);
+    // } else {
+    //   drive.setMaxOutput(Constants.powerLimit);
+    // }
   }
 
   @Override
@@ -85,12 +74,13 @@ public class Drivetrain extends SubsystemBase {
   }
 
   // Drive method for driving
-  public void drive(double left, double right) {
+  public void drive(double mainx, double mainy, double rotate) {
 
-    System.out.println(left);
-    System.out.println(right);
-
-    drive.tankDrive(left, right);
+    System.out.println(mainx+"X power");
+    System.out.println(mainy+"Y power");
+    System.out.println(rotate+"rotate power");
+    System.out.println("the things printing");
+    drive.driveCartesian(mainx, mainy, rotate);
   }
 
   public double Test(double test) {

@@ -48,7 +48,7 @@ public class RobotContainer {
     configureButtonBindings();
 
     // Configure default commands
-    m_drivetrain.setDefaultCommand(new TankDrive(m_drivetrain));
+    m_drivetrain.setDefaultCommand(new MecanumDrive(m_drivetrain));
     m_combine.setDefaultCommand(new Combine(m_combine));
     m_button.setDefaultCommand(new ButtonPress(m_button));
     m_ramp.setDefaultCommand(new Ramp(m_ramp));
