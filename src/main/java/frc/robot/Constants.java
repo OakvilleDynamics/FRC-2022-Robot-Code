@@ -44,4 +44,7 @@ public class Constants {
 
   // AUTONOMY TIMER
   public static final int autoTimerSeconds = 3;
+
+  // SENSOR PORTS
+  
 }
