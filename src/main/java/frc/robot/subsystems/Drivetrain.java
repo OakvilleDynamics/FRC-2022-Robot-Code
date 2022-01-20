@@ -52,6 +52,7 @@ public class Drivetrain extends SubsystemBase {
     addChild("Drive", drive);
     drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
+    drive.setMaxOutput(Constants.powerLimit);
 
     // To change the max power, you need to change it in the Constants.java file
     // if (partyMode) {

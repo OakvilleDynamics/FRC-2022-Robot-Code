@@ -28,7 +28,7 @@ public class Constants {
   public static final int combineMotorPort = 6;
 
   // POWER LIMITER (0.0 - 1.0)
-  public static final double powerLimit = 0.4;
+  public static final double powerLimit = 0.3;
   public static final double combineLimit = -0.45;
   public static final double slowSpeed = 0.3;
   public static final double fastSpeed = 0.4;
