@@ -79,9 +79,11 @@ public class Drivetrain extends SubsystemBase {
 
     System.out.println(mainx+"X power");
     System.out.println(mainy+"Y power");
+    System.out.println(mainy *= -1);
     System.out.println(rotate+"rotate power");
     System.out.println("the things printing");
     drive.driveCartesian(mainx, mainy, rotate);
+
   }
 
   public double Test(double test) {

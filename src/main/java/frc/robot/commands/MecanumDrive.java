@@ -10,8 +10,10 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
@@ -19,6 +21,9 @@ import frc.robot.subsystems.Drivetrain;
 public class MecanumDrive extends CommandBase {
 
   private final Drivetrain m_drivetrain;
+
+  private final Joystick driverController2 =
+      new Joystick(Constants.driverControllerPort);
 
   private final XboxController driverController =
       new XboxController(Constants.driverControllerPort);
@@ -39,8 +44,12 @@ public class MecanumDrive extends CommandBase {
   public void execute() {
     // Runs a drive command on the driverController
     
+    // Xbox Controller
     m_drivetrain.drive(driverController.getX(Hand.kLeft), driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
-   
+    
+
+    // Flight Stick
+   // m_drivetrain.drive(driverController2.getX(), driverController2.getY(), driverController2.getZ());
 
 
 
