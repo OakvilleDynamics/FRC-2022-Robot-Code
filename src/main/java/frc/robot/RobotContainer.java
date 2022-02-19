@@ -10,6 +10,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,6 +33,7 @@ public class RobotContainer {
   public final CombineSystem m_combine = new CombineSystem();
   public final PneumaticButton m_button = new PneumaticButton();
   public final RampSystem m_ramp = new RampSystem();
+  public final DistanceSensorLong m_sensorlong = new DistanceSensorLong();
 
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,6 +54,7 @@ public class RobotContainer {
     m_combine.setDefaultCommand(new Combine(m_combine));
     m_button.setDefaultCommand(new ButtonPress(m_button));
     m_ramp.setDefaultCommand(new Ramp(m_ramp));
+    m_sensorlong.setDefaultCommand(new Sensors(m_sensorlong));
 
     // Configure autonomous sendable chooser
     m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
