@@ -42,8 +42,8 @@ public class Constants {
   public static final int driverControllerPort = 0;
   public static final int auxControllerPort = 1;
 
-  // AUTONOMY TIMER
-  public static final int autoTimerSeconds = 3;
+  // CONTROLLER TYPE
+  public static boolean usingXboxController = true;
 
   // SENSOR PORTS
   
