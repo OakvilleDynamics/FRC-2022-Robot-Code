@@ -26,8 +26,11 @@ public class LimeLight extends SubsystemBase {
   }
 
   public void tstuff() {
-    System.out.println(tx);
-    System.out.println(ty);
-    System.out.println(ta);
+    double x = tx.getDouble(0.0);
+    double y = ty.getDouble(0.0);
+    double area = ta.getDouble(0.0);
+    System.out.println(x);
+    System.out.println(y);
+    System.out.println(area);
   }
 }
