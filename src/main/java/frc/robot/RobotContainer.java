@@ -32,6 +32,9 @@ public class RobotContainer {
   public final Drivetrain m_drivetrain = new Drivetrain();
  // public final DistanceSensorLong m_sensorlong = new DistanceSensorLong();
   public final LimeLight m_limelight = new LimeLight();
+  public final ShootingSystem m_shootingsystem = new ShootingSystem();
+  public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
+
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -50,6 +53,8 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(new MecanumDrive(m_drivetrain));
   //  m_sensorlong.setDefaultCommand(new Sensors(m_sensorlong));
     m_limelight.setDefaultCommand(new Sensors(m_limelight));
+    m_shootingsystem.setDefaultCommand(new BallShooter(m_shootingsystem));
+    m_climbingsystem.setDefaultCommand(new ClimbElevator(m_climbingsystem));
       
     
 
