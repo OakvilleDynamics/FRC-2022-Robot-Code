@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -83,7 +84,9 @@ public class Drivetrain extends SubsystemBase {
     System.out.println(rotate+"rotate power");
     System.out.println("the things printing");
     drive.driveCartesian(mainx, mainy, rotate);
-
+    SmartDashboard.putNumber("X Power: ", mainx);
+    SmartDashboard.putNumber("Y Power: ", mainy);
+    SmartDashboard.putNumber("Rotation Power: ", rotate);
   }
 
   public double Test(double test) {

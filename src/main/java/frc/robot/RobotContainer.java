@@ -42,7 +42,7 @@ public class RobotContainer {
   private RobotContainer() {
     // Smartdashboard Subsystems
     SmartDashboard.putData(m_drivetrain);
-
+    SmartDashboard.putNumber("Left Amount", m_drivetrain.leftAmount);
     // SmartDashboard Buttons
     SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
 
