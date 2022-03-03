@@ -16,6 +16,9 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,6 +32,14 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
+  // encoder
+  private Encoder enc;
+  
+  private static final double cpr = 64; //if am-4027 
+
+  private static final double whd = 6; // for 6 inch wheel
+
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -40,6 +51,8 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = RobotContainer.getInstance();
     HAL.report(tResourceType.kResourceType_Framework, tInstances.kFramework_RobotBuilder);
+    enc = new Encoder(0,1);
+    enc.setDistancePerPulse(Math.PI*whd/cpr); //distance per pulse is pi* (wheel diameter / counts per revolution)
   }
 
   /**
@@ -59,6 +72,8 @@ public class Robot extends TimedRobot {
     // robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
+    double dist = enc.getDistance();
+    SmartDashboard.putNumber("Encoder", dist);
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

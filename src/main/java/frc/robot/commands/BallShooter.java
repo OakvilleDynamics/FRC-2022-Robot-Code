@@ -15,6 +15,7 @@ public class BallShooter extends CommandBase {
     public BallShooter(ShootingSystem subsystem) {
       m_shootingsystem = subsystem;
       addRequirements(m_shootingsystem);
+      
     }
   
 
