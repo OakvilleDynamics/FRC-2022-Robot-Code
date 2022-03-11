@@ -10,10 +10,17 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+<<<<<<< Updated upstream
+=======
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.math.controller.PIDController;
+>>>>>>> Stashed changes
 
 public class Drivetrain extends SubsystemBase {
 
@@ -54,6 +61,18 @@ public class Drivetrain extends SubsystemBase {
     drive.setExpiration(0.1);
     drive.setMaxOutput(Constants.powerLimit);
 
+<<<<<<< Updated upstream
+=======
+    // Encoders
+    leftFrontEncoder = new Encoder(Constants.encoderPorts[0], Constants.encoderPorts[1]);
+    leftRearEncoder = new Encoder(Constants.encoderPorts[2], Constants.encoderPorts[3]);
+    rightFrontEncoder = new Encoder(Constants.encoderPorts[4], Constants.encoderPorts[5]);
+    rightRearEncoder = new Encoder(Constants.encoderPorts[6], Constants.encoderPorts[7]);
+
+    
+    //DRIVE_ENCODERS = new MedianPIDSource(LEFT_FRONT_DRIVE_ENCODER, LEFT_BACK_DRIVE_ENCODER, RIGHT_FRONT_DRIVE_ENCODER, RIGHT_BACK_DRIVE_ENCODER);
+    
+>>>>>>> Stashed changes
     // To change the max power, you need to change it in the Constants.java file
     // if (partyMode) {
     //   drive.setMaxOutput(Constants.partyModeLimit);
@@ -84,6 +103,10 @@ public class Drivetrain extends SubsystemBase {
     System.out.println("the things printing");
     drive.driveCartesian(mainx, mainy, rotate);
 
+  }
+
+  public void encoderTest() {
+    System.out.println(leftFrontEncoder.getRate());
   }
 
   public double Test(double test) {

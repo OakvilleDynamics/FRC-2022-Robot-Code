@@ -12,7 +12,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Drivetrain;
@@ -44,11 +43,12 @@ public class MecanumDrive extends CommandBase {
     // Runs a drive command on the driverController
     
     if (Constants.usingXboxController) {
-    m_drivetrain.drive(driverController.getX(Hand.kLeft), driverController.getY(Hand.kLeft), driverController.getY(Hand.kRight));
+    m_drivetrain.drive(driverController.getLeftX(), driverController.getLeftY(), driverController.getRightY());
     } 
     else {
     m_drivetrain.drive(driverJoystick.getX(), driverJoystick.getY(), driverJoystick.getZ());
     };
+    m_drivetrain.encoderTest();
   }
 
   // Called once the command ends or is interrupted.
