@@ -27,13 +27,10 @@ public class Constants {
   public static final int rightRearMotorPort = 4;
   public static final int combineMotorPort = 6;
 
-<<<<<<< Updated upstream
-=======
   // ENCODER PORTS - NOT ASSIGNED YET
   // leftFrontA/B, leftRearA/B, rightFrontA/B, rightRearA/B
-  public static final int[] encoderPorts = {0, 1, 0, 0, 0, 0, 0, 0};
+  public static final int[] encoderPorts = {7, 8, 9, 10, 11, 12, 13, 14};
 
->>>>>>> Stashed changes
   // POWER LIMITER (0.0 - 1.0)
   public static final double powerLimit = 0.3;
   public static final double combineLimit = -0.45;
@@ -50,7 +47,7 @@ public class Constants {
   public static final int auxControllerPort = 1;
 
   // CONTROLLER TYPE
-  public static boolean usingXboxController = true;
+  public static boolean usingXboxController = false;
 
   // SENSOR PORTS
   

@@ -1,0 +1,26 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/ClimbingSystem": "Subsystem",
+      "/LiveWindow/Drivetrain/Drive": "MecanumDrive",
+      "/LiveWindow/LimeLight": "Subsystem",
+      "/LiveWindow/ShootingSystem": "Subsystem",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/Auto Mode": "String Chooser",
+      "/SmartDashboard/Autonomous Command": "Command",
+      "/SmartDashboard/Drivetrain": "Subsystem"
+    }
+  },
+  "NetworkTables": {
+    "FMSInfo": {
+      "open": true
+    },
+    "SmartDashboard": {
+      "Drivetrain": {
+        "open": true
+      },
+      "open": true
+    }
+  }
+}
