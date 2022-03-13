@@ -31,6 +31,9 @@ public class Constants {
   // leftFrontA/B, leftRearA/B, rightFrontA/B, rightRearA/B
   public static final int[] encoderPorts = {7, 8, 9, 10, 11, 12, 13, 14};
 
+  // MOTOR CONTROLLER PORTS - NOT ASSIGNED YET
+  public static final int[] controllerID = {0, 1, 2, 3, 4};
+
   // POWER LIMITER (0.0 - 1.0)
   public static final double powerLimit = 0.3;
   public static final double combineLimit = -0.45;
