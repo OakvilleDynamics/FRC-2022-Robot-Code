@@ -15,20 +15,23 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.commands.CANSparkMaxSendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.util.sendable.Sendable;
+
 import com.revrobotics.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Drivetrain extends SubsystemBase {
 
   // Inits motors
-  private final PWMTalonSRX leftRear;
-  private final PWMTalonSRX leftFront;
-  private final PWMTalonSRX rightFront;
-  private final PWMTalonSRX rightRear;
+  private final CANSparkMaxSendable leftRear;
+  private final CANSparkMaxSendable leftFront;
+  private final CANSparkMaxSendable rightFront;
+  private final CANSparkMaxSendable rightRear;
 
   // Inits encoders
   public Encoder leftFrontEncoder;
@@ -36,7 +39,6 @@ public class Drivetrain extends SubsystemBase {
   public Encoder rightFrontEncoder;
   public Encoder rightRearEncoder;
 
-  //  private final DifferentialDrive drive;
   private final MecanumDrive drive;
 
   public double leftAmount;
@@ -47,21 +49,21 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
 
     // Assigns motors
-    leftFront = new PWMTalonSRX(Constants.leftFrontMotorPort);
-    addChild("LeftFront", leftFront);
+    leftFront = new CANSparkMaxSendable(Constants.controllerID[0], MotorType.kBrushed);
+    addChild("leftFront", leftFront);
     leftFront.setInverted(false);
 
-    leftRear = new PWMTalonSRX(Constants.leftRearMotorPort);
-    addChild("LeftRear", leftRear);
-    leftRear.setInverted(false);
+    leftRear = new CANSparkMaxSendable(Constants.controllerID[1], MotorType.kBrushed);
+    addChild("leftRear", leftRear);
+    leftFront.setInverted(false);
 
-    rightFront = new PWMTalonSRX(Constants.rightFrontMotorPort);
-    addChild("RightFront", rightFront);
-    rightFront.setInverted(false);
+    rightFront = new CANSparkMaxSendable(Constants.controllerID[2], MotorType.kBrushed);
+    addChild("rightFront", rightFront);
+    leftFront.setInverted(false);
 
-    rightRear = new PWMTalonSRX(Constants.rightRearMotorPort);
-    addChild("RightRear", rightRear);
-    rightRear.setInverted(false);
+    rightRear = new CANSparkMaxSendable(Constants.controllerID[3], MotorType.kBrushed);
+    addChild("rightRear", rightRear);
+    leftFront.setInverted(false);
 
     drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     addChild("Drive", drive);
