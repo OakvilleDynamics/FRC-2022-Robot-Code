@@ -29,7 +29,7 @@ public class BallShooter extends CommandBase {
     // Since our balls velocity will most likely be decided through math from the distance measured by the limelight,
     // we should probably make another command(?) where we take the distance from the limelight and do all the math.
     // Then here, we can just take the value from that and pass it to the shooting subsystem.
-    m_shootingsystem.shoot(0);
+    m_shootingsystem.shoot();
   }
 
   // Called once the command ends or is interrupted.

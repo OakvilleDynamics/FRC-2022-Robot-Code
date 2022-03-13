@@ -28,13 +28,13 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   // Ball shooting method
-  public void shoot(double ballVelocity) {
+  public void shoot() {
 
     // Get distance from limelight - NOT IMPLEMENTED
 
     // Get best velocity from distance
     // First 0 is placeholder for distance
-    ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
+    double ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
 
     // Turn the velocity the ball needs to go into the velocity the motor needs to shoot the ball at somehow - NOT IMPLEMENTED
     double shootSpeed = ballVelocity * 1;
