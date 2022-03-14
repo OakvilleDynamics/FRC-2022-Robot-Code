@@ -112,6 +112,19 @@ public class Drivetrain extends SubsystemBase {
 
   }
 
+  public void getEncoderRate() {
+    // This is how we get the velocity from the motors. For future use!
+    leftFrontEncoder.getRate();
+    leftRearEncoder.getRate();
+    rightFrontEncoder.getRate();
+    rightRearEncoder.getRate();
+  }
+
+  public void getMotorVoltage() {
+    // This is how we get power draw from the motors I assume
+    leftFront.getBusVoltage();
+  }
+
   public void encoderTest() {
     System.out.println(leftFrontEncoder.getRate());
   }
