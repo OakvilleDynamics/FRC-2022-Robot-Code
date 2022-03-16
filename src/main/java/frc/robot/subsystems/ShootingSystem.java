@@ -22,7 +22,7 @@ public class ShootingSystem extends SubsystemBase {
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
     // Assign motor
-    shooterMotor = new CANSparkMaxSendable(Constants.controllerID[5], MotorType.kBrushed);
+    shooterMotor = new CANSparkMaxSendable(Constants.controllerID[4], MotorType.kBrushed);
     addChild("Shooter", shooterMotor);
     shooterMotor.setInverted(false);
   }
