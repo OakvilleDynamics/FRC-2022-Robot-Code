@@ -49,19 +49,19 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
 
     // Assigns motors
-    leftFront = new CANSparkMaxSendable(Constants.controllerID[0], MotorType.kBrushed);
+    leftFront = new CANSparkMaxSendable(Constants.canID[0], MotorType.kBrushed);
     addChild("leftFront", leftFront);
     leftFront.setInverted(false);
 
-    leftRear = new CANSparkMaxSendable(Constants.controllerID[1], MotorType.kBrushed);
+    leftRear = new CANSparkMaxSendable(Constants.canID[1], MotorType.kBrushed);
     addChild("leftRear", leftRear);
     leftFront.setInverted(false);
 
-    rightFront = new CANSparkMaxSendable(Constants.controllerID[2], MotorType.kBrushed);
+    rightFront = new CANSparkMaxSendable(Constants.canID[2], MotorType.kBrushed);
     addChild("rightFront", rightFront);
     leftFront.setInverted(false);
 
-    rightRear = new CANSparkMaxSendable(Constants.controllerID[3], MotorType.kBrushed);
+    rightRear = new CANSparkMaxSendable(Constants.canID[3], MotorType.kBrushed);
     addChild("rightRear", rightRear);
     leftFront.setInverted(false);
 

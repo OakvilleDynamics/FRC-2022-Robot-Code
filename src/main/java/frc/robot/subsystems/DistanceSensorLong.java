@@ -13,7 +13,7 @@ public class DistanceSensorLong extends SubsystemBase {
   
   /** Creates a new DistanceSensorLong. */
   public DistanceSensorLong() {
-sharp = new AnalogInput(0);
+  sharp = new AnalogInput(0);
   }
   
 
