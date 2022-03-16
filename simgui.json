@@ -3,13 +3,22 @@
     "types": {
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/ClimbingSystem": "Subsystem",
+      "/LiveWindow/Drivetrain": "Subsystem",
       "/LiveWindow/Drivetrain/Drive": "MecanumDrive",
       "/LiveWindow/LimeLight": "Subsystem",
       "/LiveWindow/ShootingSystem": "Subsystem",
+      "/LiveWindow/ShootingSystem/Shooter": "Motor Controller",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/Auto Mode": "String Chooser",
       "/SmartDashboard/Autonomous Command": "Command",
       "/SmartDashboard/Drivetrain": "Subsystem"
+    },
+    "windows": {
+      "/FMSInfo": {
+        "window": {
+          "visible": true
+        }
+      }
     }
   },
   "NetworkTables": {

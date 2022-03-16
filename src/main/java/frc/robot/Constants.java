@@ -32,6 +32,7 @@ public class Constants {
   public static final int[] encoderPorts = {7, 8, 9, 10, 11, 12, 13, 14};
 
   // IDS TO REFER TO CAN-CONNECTED DEVICES
+  // Each device has a specific device ID, visible through the Phoenix Tuner utility.
   // LF, LR, RF, RR, Shooter, Left Winch, Left Tilt, Intake, Clock
   public static final int[] canID = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
