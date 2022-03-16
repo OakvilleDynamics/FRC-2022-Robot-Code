@@ -4,31 +4,35 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.BallShooter;
 import frc.robot.commands.CANSparkMaxSendable;
-import frc.robot.subsystems.BallVelocity;
 
 public class ShootingSystem extends SubsystemBase {
 
-  // Init shooter motor
+  // Init shooter + clock motor
   private final CANSparkMaxSendable shooterMotor;
-
-  
+  private final VictorSPX clockMotor;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
-    // Assign motor
+
+    // Assign shooter + clock motor
     shooterMotor = new CANSparkMaxSendable(Constants.canID[4], MotorType.kBrushed);
     addChild("Shooter", shooterMotor);
     shooterMotor.setInverted(false);
+
+    clockMotor = new VictorSPX(Constants.canID[8]);
+
   }
 
   // Ball shooting method
-  public void shoot() {
+  public void shootPrep() {
 
     // Get distance from limelight - NOT IMPLEMENTED
 
@@ -42,6 +46,14 @@ public class ShootingSystem extends SubsystemBase {
     // Set motor velocity to the required velocity for a period of time
     // Garrett said something about being able to measure motor resistance; maybe that could be used to see when the ball is past the motor?
     shooterMotor.set(shootSpeed);
+  }
+
+  public void stopPrep() {
+    shooterMotor.stopMotor();
+  }
+
+  public void shoot() { // Move ball to shoot using clock motor
+    clockMotor.set(ControlMode.PercentOutput, 0.25);
   }
 
   @Override

@@ -12,7 +12,4 @@ import frc.robot.Constants;
 public class MotorControllers extends CommandBase{
     PowerDistribution PDHub = new PowerDistribution(0, ModuleType.kCTRE);
     VictorSPX intakeController = new VictorSPX(Constants.canID[5]);
-    VictorSPX liftWenchController = new VictorSPX(Constants.canID[6]);
-    VictorSPX liftTiltController = new VictorSPX(Constants.canID[7]);
-    VictorSPX clockController = new VictorSPX(Constants.canID[8]);
 }
