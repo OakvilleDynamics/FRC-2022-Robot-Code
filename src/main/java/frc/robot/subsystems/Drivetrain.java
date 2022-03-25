@@ -10,34 +10,27 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.CANSparkMaxSendable;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.util.sendable.Sendable;
 
 import com.revrobotics.*;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxAlternateEncoder.Type;
 
 public class Drivetrain extends SubsystemBase {
 
   // Inits motors
-  private final CANSparkMaxSendable leftRear;
-  private final CANSparkMaxSendable leftFront;
-  private final CANSparkMaxSendable rightFront;
-  private final CANSparkMaxSendable rightRear;
+  private final CANSparkMax leftRear;
+  private final CANSparkMax leftFront;
+  private final CANSparkMax rightFront;
+  private final CANSparkMax rightRear;
 
   // Inits encoders
-  public Encoder leftFrontEncoder;
-  public Encoder leftRearEncoder;
-  public Encoder rightFrontEncoder;
-  public Encoder rightRearEncoder;
+  public RelativeEncoder leftFrontEncoder;
+  public RelativeEncoder leftRearEncoder;
+  public RelativeEncoder rightFrontEncoder;
+  public RelativeEncoder rightRearEncoder;
 
   private final MecanumDrive drive;
 
@@ -49,20 +42,16 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
 
     // Assigns motors
-    leftFront = new CANSparkMaxSendable(Constants.canID[0], MotorType.kBrushed);
-    addChild("leftFront", leftFront);
+    leftFront = new CANSparkMax(Constants.canID[0], MotorType.kBrushed);
     leftFront.setInverted(false);
 
-    leftRear = new CANSparkMaxSendable(Constants.canID[1], MotorType.kBrushed);
-    addChild("leftRear", leftRear);
+    leftRear = new CANSparkMax(Constants.canID[1], MotorType.kBrushed);
     leftFront.setInverted(false);
 
-    rightFront = new CANSparkMaxSendable(Constants.canID[2], MotorType.kBrushed);
-    addChild("rightFront", rightFront);
+    rightFront = new CANSparkMax(Constants.canID[2], MotorType.kBrushed);
     leftFront.setInverted(false);
 
-    rightRear = new CANSparkMaxSendable(Constants.canID[3], MotorType.kBrushed);
-    addChild("rightRear", rightRear);
+    rightRear = new CANSparkMax(Constants.canID[3], MotorType.kBrushed);
     leftFront.setInverted(false);
 
     drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
@@ -72,11 +61,10 @@ public class Drivetrain extends SubsystemBase {
     drive.setMaxOutput(Constants.powerLimit);
 
     // Encoders
-    leftFrontEncoder = new Encoder(Constants.encoderPorts[0], Constants.encoderPorts[1]);
-    leftRearEncoder = new Encoder(Constants.encoderPorts[2], Constants.encoderPorts[3]);
-    rightFrontEncoder = new Encoder(Constants.encoderPorts[4], Constants.encoderPorts[5]);
-    rightRearEncoder = new Encoder(Constants.encoderPorts[6], Constants.encoderPorts[7]);
-
+    leftFrontEncoder = leftFront.getAlternateEncoder(Type.kQuadrature, 8192);
+    leftRearEncoder = leftRear.getAlternateEncoder(Type.kQuadrature, 8192);
+    rightFrontEncoder = rightFront.getAlternateEncoder(Type.kQuadrature, 8192);
+    rightRearEncoder = rightRear.getAlternateEncoder(Type.kQuadrature, 8192);
     
     //DRIVE_ENCODERS = new MedianPIDSource(LEFT_FRONT_DRIVE_ENCODER, LEFT_BACK_DRIVE_ENCODER, RIGHT_FRONT_DRIVE_ENCODER, RIGHT_BACK_DRIVE_ENCODER);
 
@@ -114,10 +102,10 @@ public class Drivetrain extends SubsystemBase {
 
   public void getEncoderRate() {
     // This is how we get the velocity from the motors. For future use!
-    leftFrontEncoder.getRate();
-    leftRearEncoder.getRate();
-    rightFrontEncoder.getRate();
-    rightRearEncoder.getRate();
+    leftFrontEncoder.getVelocity();
+    leftRearEncoder.getVelocity();
+    rightFrontEncoder.getVelocity();
+    rightRearEncoder.getVelocity();
   }
 
   public void getMotorVoltage() {
@@ -126,7 +114,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void encoderTest() {
-    System.out.println(leftFrontEncoder.getRate());
+    System.out.println(leftFrontEncoder.getVelocity());
   }
 
   public double Test(double test) {

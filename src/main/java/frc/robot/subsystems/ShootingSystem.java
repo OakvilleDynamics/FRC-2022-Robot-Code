@@ -6,25 +6,22 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.commands.CANSparkMaxSendable;
 
 public class ShootingSystem extends SubsystemBase {
 
   // Init shooter + clock motor
-  private final CANSparkMaxSendable shooterMotor;
+  private final CANSparkMax shooterMotor;
   private final VictorSPX clockMotor;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
 
     // Assign shooter + clock motor
-    shooterMotor = new CANSparkMaxSendable(Constants.canID[4], MotorType.kBrushed);
-    addChild("Shooter", shooterMotor);
+    shooterMotor = new CANSparkMax(Constants.canID[4], MotorType.kBrushed);
     shooterMotor.setInverted(false);
 
     clockMotor = new VictorSPX(Constants.canID[8]);
