@@ -34,11 +34,6 @@ public class Drivetrain extends SubsystemBase {
 
   private final MecanumDrive drive;
 
-  public double leftAmount;
-  public double rightAmount;
-  public boolean partyMode = false;
-  
-
   public Drivetrain() {
 
     // Assigns motors
@@ -113,13 +108,5 @@ public class Drivetrain extends SubsystemBase {
 
   public double Test(double test) {
     return 0;
-  }
-
-  public boolean getPartyMode() {
-    return partyMode;
-  }
-
-  public void setPartyMode(Boolean flag) {
-    partyMode = flag;
   }
 }

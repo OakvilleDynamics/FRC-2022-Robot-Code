@@ -23,6 +23,24 @@ public class IntakeSystem extends SubsystemBase {
     }
 
     public void out() {
-        intake.set(ControlMode.PercentOutput, 0.3);
+        intake.set(ControlMode.PercentOutput, -0.3);
+    }
+
+    public void stop() {
+        intake.set(ControlMode.PercentOutput, 0);
+    }
+
+    public void intake(boolean leftTrigger, double rightTrigger, boolean button) {
+        if (rightTrigger < 0.25) {
+            intake.set(ControlMode.PercentOutput, 0.3);
+        }
+
+        if (leftTrigger == true) {
+            intake.set(ControlMode.PercentOutput, -0.3);
+        }
+        
+        if (button == true) {
+            intake.set(ControlMode.PercentOutput, 0);
+        }
     }
 }

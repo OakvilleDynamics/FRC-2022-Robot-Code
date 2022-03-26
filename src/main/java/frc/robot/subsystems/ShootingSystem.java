@@ -50,7 +50,7 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   public void shoot() { // Move ball to shoot using clock motor
-    clockMotor.set(ControlMode.PercentOutput, 0.25);
+    clockMotor.set(ControlMode.PercentOutput, 0.1);
   }
 
   @Override

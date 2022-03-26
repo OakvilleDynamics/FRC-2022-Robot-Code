@@ -24,15 +24,7 @@ public class IntakeRamp extends CommandBase{
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-
-        if (auxController.getRightTriggerAxis() > 0.25) {
-            m_intakesystem.in();
-        }
-
-        if (auxController.getLeftTriggerAxis() > 0.25) {
-            m_intakesystem.out();
-        }
-        
+        m_intakesystem.intake(auxController.getYButton(), auxController.getRightTriggerAxis(), auxController.getAButton());
     }
 
     // Called once the command ends or is interrupted.

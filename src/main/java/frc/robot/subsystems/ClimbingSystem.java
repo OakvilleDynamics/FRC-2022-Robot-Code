@@ -19,8 +19,8 @@ import frc.robot.Constants;
 public class ClimbingSystem extends SubsystemBase {
 
   // Init elevator motors
-  VictorSPX liftWench = new VictorSPX(Constants.canID[6]);
-  VictorSPX liftTilt = new VictorSPX(Constants.canID[7]);
+  VictorSPX liftWench = new VictorSPX(Constants.canID[5]);
+  VictorSPX liftTilt = new VictorSPX(Constants.canID[6]);
 
   /** Creates a new ClimbingSystem. */
   public ClimbingSystem() {}
@@ -34,11 +34,11 @@ public class ClimbingSystem extends SubsystemBase {
     // 0.25 axis deadzone both ways
     // 0.3 multiplier is for safety purposes right now
     if (leftY > 0.25) { // Left stick up - Extend elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*0.3);
+      liftWench.set(ControlMode.PercentOutput, leftY*0.75);
     }
 
     if (leftY < -0.25) { // Left stick downward - Retract elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*0.3);
+      liftWench.set(ControlMode.PercentOutput, leftY*0.75);
     }
 
     if (rightY > 0.25) { // Right stick up - Rotate elevator outward
