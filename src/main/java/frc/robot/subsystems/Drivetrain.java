@@ -51,7 +51,7 @@ public class Drivetrain extends SubsystemBase {
 
     drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     addChild("Drive", drive);
-    drive.setSafetyEnabled(true);
+    //drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
     drive.setMaxOutput(Constants.powerLimit);
 
@@ -85,7 +85,8 @@ public class Drivetrain extends SubsystemBase {
 
   // Drive method for driving
   public void drive(double mainx, double mainy, double rotate) {
-    mainy *= -1;
+    mainx *= -1;
+    rotate *= -1;
     drive.driveCartesian(mainy, mainx, rotate);
   }
 
