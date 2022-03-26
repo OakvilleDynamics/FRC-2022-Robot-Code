@@ -53,7 +53,7 @@ public class ShootingSystem extends SubsystemBase {
   // Ball shooting method
   public void shootPrep(double shootSpeed) {
     double mSpeed = ((shootSpeed * -1) + 1) / 2;
-    shooterMotor.set(mSpeed);
+    shooterMotor.set(1);
   }
 
   public void stopPrep() {
@@ -61,9 +61,9 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   public void clock() {
-    clockMotor.set(ControlMode.PercentOutput, 0.5); // normal speed before ball resistance
+    clockMotor.set(ControlMode.PercentOutput, 0.05); // normal speed before ball resistance
     if (powerDistribution.getCurrent(0) > 5) { // if more amperage is used to move the motor
-      clockMotor.set(ControlMode.PercentOutput, 0.2); // slow down motor
+      clockMotor.set(ControlMode.PercentOutput, 0.02); // slow down motor
       if (topLine.getValue() > 0 && bottomLine.getValue() > 0) { // if line followers see that ball in middle
         clockMotor.set(ControlMode.PercentOutput, 0); // stop motor
       }
@@ -71,8 +71,11 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   public void shoot(boolean triggerState) { // Move ball to shoot using clock motor
-    while (triggerState == true)
-    clockMotor.set(ControlMode.PercentOutput, 0.3);
+    if (triggerState == true) {
+      clockMotor.set(ControlMode.PercentOutput, 0.25);
+    } else if (triggerState == false) {
+      clockMotor.set(ControlMode.PercentOutput, 0);
+    }
   }
 
   public void stopShoot() {

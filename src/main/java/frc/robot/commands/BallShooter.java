@@ -54,7 +54,7 @@ public class BallShooter extends CommandBase {
       m_shootingsystem.stopPrep();
     }
 
-    m_shootingsystem.shoot(driverController.getRawButton(1));
+    m_shootingsystem.shoot(driverController.getTrigger());
 
     if (driverController.getRawButton(2) == true) {
       m_shootingsystem.clock();
