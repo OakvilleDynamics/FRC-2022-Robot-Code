@@ -54,7 +54,7 @@ public class ClimbingSystem extends SubsystemBase {
     }
 
     if (rightY > -0.25 && rightY < 0.25) {
-      liftWench.set(ControlMode.PercentOutput, 0);
+      liftTilt.set(ControlMode.PercentOutput, 0);
     }
   }
 }

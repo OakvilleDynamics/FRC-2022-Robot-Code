@@ -7,15 +7,15 @@ import frc.robot.subsystems.IntakeSystem;
 
 public class IntakeRamp extends CommandBase {
 
+    private final XboxController auxController = 
+        new XboxController(Constants.auxControllerPort);
 
-    private final IntakeSystem m_intakesystem;
-
-    public IntakeRamp(IntakeSystem subsystem) {
-        m_intakesystem = subsystem;
-        addRequirements(m_intakesystem);
-    }
-
-    private final XboxController auxController = new XboxController(Constants.auxControllerPort);
+        private final IntakeSystem m_intakesystem;
+    
+        public IntakeRamp(IntakeSystem subsystem) {
+            m_intakesystem = subsystem;
+            addRequirements(m_intakesystem);
+        }
 
     // Called when the command is initially scheduled.
     @Override
@@ -25,6 +25,7 @@ public class IntakeRamp extends CommandBase {
     @Override
     public void execute() {
         m_intakesystem.intake(auxController.getLeftTriggerAxis(), auxController.getRightTriggerAxis(), auxController.getAButton());
+        System.out.print("executing intake system");
     }
 
     // Called once the command ends or is interrupted.
@@ -34,6 +35,6 @@ public class IntakeRamp extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-    return false;
+        return false;
     }
 }

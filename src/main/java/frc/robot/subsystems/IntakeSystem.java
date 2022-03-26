@@ -15,19 +15,18 @@ public class IntakeSystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-    // This method will be called once per scheduler run
+        // This method will be called once per scheduler run
     }
 
     public void intake(double leftTrigger, double rightTrigger, boolean button) {
-        while (rightTrigger < 0.25) {
-            intake.set(ControlMode.PercentOutput, 0.3);
-        }
-
-        while (leftTrigger < 0.25) {
-            intake.set(ControlMode.PercentOutput, -0.3);
-        }
         
-        while (button == true) {
+        if (leftTrigger > 0.25) {
+            intake.set(ControlMode.PercentOutput, -0.3);
+            System.out.print("left trigger");
+        } else if (rightTrigger > 0.25) {
+            intake.set(ControlMode.PercentOutput, 0.3);
+            System.out.print("right trigger");
+        } else if (button == true) {
             intake.set(ControlMode.PercentOutput, 0);
         }
     }

@@ -29,13 +29,6 @@ public class Robot extends TimedRobot {
 
   private RobotContainer m_robotContainer;
 
-  // encoder
-  
-  private static final double cpr = 64; //if am-4027 
-
-  private static final double whd = 6; // for 6 inch wheel
-
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
