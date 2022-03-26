@@ -47,7 +47,7 @@ public class BallShooter extends CommandBase {
     // Then here, we can just take the value from that and pass it to the shooting subsystem.
 
     if (auxController.getRightBumper() == true) { // Set shooting motor to the speed we want whenever right bumper is pressed
-      m_shootingsystem.shootPrep();
+      m_shootingsystem.shootPrep(driverController.getRawAxis(4));
     }
 
     if (auxController.getLeftBumper() == true) { // Stop shooting motor when left bumper pressed
@@ -60,6 +60,10 @@ public class BallShooter extends CommandBase {
 
     if (driverController.getRawButton(2) == true) {
       m_shootingsystem.clock();
+    }
+
+    if (driverController.getRawButton(3) == true) {
+      m_shootingsystem.reject();
     }
   }
 

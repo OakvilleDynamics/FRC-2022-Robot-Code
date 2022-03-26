@@ -12,6 +12,7 @@
       "/LiveWindow/ClimbingSystem": "Subsystem",
       "/LiveWindow/Drivetrain": "Subsystem",
       "/LiveWindow/Drivetrain/Drive": "MecanumDrive",
+      "/LiveWindow/IntakeSystem": "Subsystem",
       "/LiveWindow/LimeLight": "Subsystem",
       "/LiveWindow/ShootingSystem": "Subsystem",
       "/LiveWindow/ShootingSystem/Shooter": "Motor Controller",

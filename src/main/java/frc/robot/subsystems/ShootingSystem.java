@@ -44,20 +44,9 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   // Ball shooting method
-  public void shootPrep() {
-
-    // Get distance from limelight - NOT IMPLEMENTED
-
-    // Get best velocity from distance
-    // First 0 is placeholder for distance
-    //double ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
-    double ballVelocity = 0.3;
-    // Turn the velocity the ball needs to go into the velocity the motor needs to shoot the ball at somehow - NOT IMPLEMENTED
-    double shootSpeed = ballVelocity * 1;
-
-    // Set motor velocity to the required velocity for a period of time
-    // Garrett said something about being able to measure motor resistance; maybe that could be used to see when the ball is past the motor?
-    shooterMotor.set(shootSpeed);
+  public void shootPrep(double shootSpeed) {
+    double mSpeed = ((shootSpeed * -1) + 1) / 2;
+    shooterMotor.set(mSpeed);
   }
 
   public void stopPrep() {
