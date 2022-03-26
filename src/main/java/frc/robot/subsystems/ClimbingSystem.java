@@ -41,12 +41,20 @@ public class ClimbingSystem extends SubsystemBase {
       liftWench.set(ControlMode.PercentOutput, leftY*0.75);
     }
 
+    if (leftY > -0.25 && leftY < 0.25) {
+      liftWench.set(ControlMode.PercentOutput, 0);
+    }
+
     if (rightY > 0.25) { // Right stick up - Rotate elevator outward
       liftTilt.set(ControlMode.PercentOutput, rightY*-0.3);
     }
 
     if (rightY < -0.25) { // Right stick down - Rotate elevator inward
       liftTilt.set(ControlMode.PercentOutput, rightY*-0.3);
+    }
+
+    if (rightY > -0.25 && rightY < 0.25) {
+      liftWench.set(ControlMode.PercentOutput, 0);
     }
   }
 }

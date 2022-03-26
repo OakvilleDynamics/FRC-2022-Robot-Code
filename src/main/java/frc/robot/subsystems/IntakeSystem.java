@@ -18,28 +18,16 @@ public class IntakeSystem extends SubsystemBase {
     // This method will be called once per scheduler run
     }
 
-    public void in() {
-        intake.set(ControlMode.PercentOutput, 0.3);
-    }
-
-    public void out() {
-        intake.set(ControlMode.PercentOutput, -0.3);
-    }
-
-    public void stop() {
-        intake.set(ControlMode.PercentOutput, 0);
-    }
-
-    public void intake(boolean leftTrigger, double rightTrigger, boolean button) {
-        if (rightTrigger < 0.25) {
+    public void intake(double leftTrigger, double rightTrigger, boolean button) {
+        while (rightTrigger < 0.25) {
             intake.set(ControlMode.PercentOutput, 0.3);
         }
 
-        if (leftTrigger == true) {
+        while (leftTrigger < 0.25) {
             intake.set(ControlMode.PercentOutput, -0.3);
         }
         
-        if (button == true) {
+        while (button == true) {
             intake.set(ControlMode.PercentOutput, 0);
         }
     }
