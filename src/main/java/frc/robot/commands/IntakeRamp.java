@@ -25,7 +25,6 @@ public class IntakeRamp extends CommandBase {
     @Override
     public void execute() {
         m_intakesystem.intake(auxController.getRawAxis(2), auxController.getRawAxis(3), auxController.getAButton());
-        System.out.print("executing intake system");
     }
 
     // Called once the command ends or is interrupted.
