@@ -90,14 +90,8 @@ public class Drivetrain extends SubsystemBase {
 
   // Drive method for driving
   public void drive(double mainx, double mainy, double rotate) {
-
-    System.out.println(mainx+"X power");
-    System.out.println(mainy+"Y power");
-    System.out.println(mainy *= -1);
-    System.out.println(rotate+"rotate power");
-    System.out.println("the things printing");
-    drive.driveCartesian(mainx, mainy, rotate);
-
+    mainy *= -1;
+    drive.driveCartesian(mainy, mainx, rotate);
   }
 
   public void getEncoderRate() {

@@ -35,8 +35,8 @@ public class ShootingSystem extends SubsystemBase {
 
     // Get best velocity from distance
     // First 0 is placeholder for distance
-    double ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
-
+    //double ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
+    double ballVelocity = 0.3;
     // Turn the velocity the ball needs to go into the velocity the motor needs to shoot the ball at somehow - NOT IMPLEMENTED
     double shootSpeed = ballVelocity * 1;
 
