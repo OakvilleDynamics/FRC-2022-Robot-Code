@@ -12,6 +12,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -36,11 +37,17 @@ public class ShootingSystem extends SubsystemBase {
     shooterMotor.setInverted(false);
 
     clockMotor = new VictorSPX(Constants.canID[8]);
+    clockMotor.setInverted(true);
 
     powerDistribution = new PowerDistribution(Constants.pdpCID, ModuleType.kCTRE);
 
     topLine = new AnalogInput(1);
+    addChild("topLine", topLine);
     bottomLine = new AnalogInput(0);
+    addChild("bottomLine", bottomLine);
+
+    double clockAmperage = powerDistribution.getCurrent(0);
+    SmartDashboard.putNumber("Clock Motor Amperage", clockAmperage);
   }
 
   // Ball shooting method
@@ -63,12 +70,27 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
-  public void shoot() { // Move ball to shoot using clock motor
-    clockMotor.set(ControlMode.PercentOutput, 0.1);
+  public void shoot(boolean triggerState) { // Move ball to shoot using clock motor
+    while (triggerState == true)
+    clockMotor.set(ControlMode.PercentOutput, 0.3);
+  }
+
+  public void stopShoot() {
+    clockMotor.set(ControlMode.PercentOutput, 0);
   }
 
   public void reject() {
     clockMotor.set(ControlMode.PercentOutput, -0.5);
+  }
+
+  public void stopClock() {
+    clockMotor.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void testClock(boolean testButtonState) {
+    while (testButtonState == true) {
+      clockMotor.set(ControlMode.PercentOutput, 0.5);
+    }
   }
 
   @Override

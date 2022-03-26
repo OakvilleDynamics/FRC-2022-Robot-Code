@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.util;
 
 public class BallVelocity {
     public static double deviance(double dist, double vr) {

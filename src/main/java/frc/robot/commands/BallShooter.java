@@ -54,9 +54,7 @@ public class BallShooter extends CommandBase {
       m_shootingsystem.stopPrep();
     }
 
-    if (driverController.getTrigger() == true) { // Move clock motor and shoot ball when trigger on joystick is pressed
-      m_shootingsystem.shoot();
-    }
+    m_shootingsystem.shoot(driverController.getRawButton(1));
 
     if (driverController.getRawButton(2) == true) {
       m_shootingsystem.clock();
@@ -65,6 +63,12 @@ public class BallShooter extends CommandBase {
     if (driverController.getRawButton(3) == true) {
       m_shootingsystem.reject();
     }
+
+    if (driverController.getRawButton(4) == true) {
+      m_shootingsystem.stopClock();
+    }
+
+    m_shootingsystem.testClock(auxController.getBButton());
   }
 
   // Called once the command ends or is interrupted.
