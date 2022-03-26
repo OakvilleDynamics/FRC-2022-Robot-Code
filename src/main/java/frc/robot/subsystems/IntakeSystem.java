@@ -22,12 +22,10 @@ public class IntakeSystem extends SubsystemBase {
         
         while (leftTrigger > 0.25) {
             intake.set(ControlMode.PercentOutput, -1);
-            System.out.print("left trigger");
         }
-        
+
         while (rightTrigger > 0.25) {
             intake.set(ControlMode.PercentOutput, 1);
-            System.out.print("right trigger");
         }
     }
 }
