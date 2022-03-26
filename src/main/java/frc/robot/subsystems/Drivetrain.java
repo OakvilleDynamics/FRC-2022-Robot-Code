@@ -102,9 +102,7 @@ public class Drivetrain extends SubsystemBase {
     leftFront.getBusVoltage();
   }
 
-  public void encoderTest() {
-    System.out.println(leftFrontEncoder.getVelocity());
-  }
+  public void encoderTest() {}
 
   public double Test(double test) {
     return 0;

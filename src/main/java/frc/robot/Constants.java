@@ -24,6 +24,7 @@ public class Constants {
   // Each device has a specific device ID, visible through the Phoenix Tuner utility.
   // LF, LR, RF, RR, Shooter, Left Winch, Left Tilt, Intake, Clock
   public static final int[] canID = {10, 1, 2, 3, 4, 5, 6, 7, 8};
+  public static final int pdpCID = 11;
 
   // POWER LIMITER (0.0 - 1.0)
   public static final double powerLimit = 0.3;

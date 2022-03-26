@@ -30,10 +30,10 @@ public class RobotContainer {
 
   // The robot's subsystems
   public final Drivetrain m_drivetrain = new Drivetrain();
- // public final DistanceSensorLong m_sensorlong = new DistanceSensorLong();
   public final LimeLight m_limelight = new LimeLight();
   public final ShootingSystem m_shootingsystem = new ShootingSystem();
   public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
+  public final IntakeSystem m_intakesystem = new IntakeSystem();
 
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -51,13 +51,11 @@ public class RobotContainer {
 
     // Configure default commands
     m_drivetrain.setDefaultCommand(new MecanumDrive(m_drivetrain));
-  //  m_sensorlong.setDefaultCommand(new Sensors(m_sensorlong));
     m_limelight.setDefaultCommand(new Sensors(m_limelight));
     m_shootingsystem.setDefaultCommand(new BallShooter(m_shootingsystem));
     m_climbingsystem.setDefaultCommand(new ClimbElevator(m_climbingsystem));
-      
+    m_intakesystem.setDefaultCommand(new IntakeRamp(m_intakesystem));
     
-
     // Configure autonomous sendable chooser
     m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
 

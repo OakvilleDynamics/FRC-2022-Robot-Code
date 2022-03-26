@@ -11,6 +11,7 @@ Left bumper - Stop shooter motor
 Left stick up - Extend elevator
 Left stick down - Retract elevator
 Right stick up/down - Rotate elevator inward/outward
+
 */
 
 package frc.robot.commands;
@@ -55,6 +56,10 @@ public class BallShooter extends CommandBase {
 
     if (driverController.getTrigger() == true) { // Move clock motor and shoot ball when trigger on joystick is pressed
       m_shootingsystem.shoot();
+    }
+
+    if (driverController.getRawButton(2) == true) {
+      m_shootingsystem.clock();
     }
   }
 
