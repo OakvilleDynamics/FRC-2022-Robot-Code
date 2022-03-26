@@ -20,12 +20,12 @@ public class IntakeSystem extends SubsystemBase {
 
     public void intake(double leftTrigger, double rightTrigger, boolean button) {
         
-        while (leftTrigger > 0.25) {
+        if (leftTrigger > 0.25) {
             intake.set(ControlMode.PercentOutput, -1);
-        }
-
-        while (rightTrigger > 0.25) {
+        } else if (rightTrigger > 0.25) {
             intake.set(ControlMode.PercentOutput, 1);
+        } else {
+            intake.set(ControlMode.PercentOutput, 0);
         }
     }
 }
