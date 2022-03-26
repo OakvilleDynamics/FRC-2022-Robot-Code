@@ -25,12 +25,12 @@ public class LimeLight extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void tstuff() {
+  /* public void tstuff() {
     double x = tx.getDouble(0.0);
     double y = ty.getDouble(0.0);
     double area = ta.getDouble(0.0);
     System.out.println(x);
     System.out.println(y);
     System.out.println(area);
-  }
+  } */
 }

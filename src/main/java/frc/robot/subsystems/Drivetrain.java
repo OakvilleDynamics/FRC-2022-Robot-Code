@@ -10,50 +10,59 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxAlternateEncoder.Type;
+
 public class Drivetrain extends SubsystemBase {
 
   // Inits motors
-  private final PWMTalonSRX leftRear;
-  private final PWMTalonSRX leftFront;
-  private final PWMTalonSRX rightFront;
-  private final PWMTalonSRX rightRear;
-  //  private final DifferentialDrive drive;
-  private final MecanumDrive drive;
+  private final CANSparkMax leftRear;
+  private final CANSparkMax leftFront;
+  private final CANSparkMax rightFront;
+  private final CANSparkMax rightRear;
 
-  public double leftAmount;
-  public double rightAmount;
-  public boolean partyMode = false;
+  // Inits encoders
+  public RelativeEncoder leftFrontEncoder;
+  public RelativeEncoder leftRearEncoder;
+  public RelativeEncoder rightFrontEncoder;
+  public RelativeEncoder rightRearEncoder;
+
+  private final MecanumDrive drive;
 
   public Drivetrain() {
 
     // Assigns motors
-    leftFront = new PWMTalonSRX(Constants.leftFrontMotorPort);
-    addChild("LeftFront", leftFront);
+    leftFront = new CANSparkMax(Constants.canID[0], MotorType.kBrushed);
     leftFront.setInverted(false);
 
-    leftRear = new PWMTalonSRX(Constants.leftRearMotorPort);
-    addChild("LeftRear", leftRear);
-    leftRear.setInverted(false);
+    leftRear = new CANSparkMax(Constants.canID[1], MotorType.kBrushed);
+    leftFront.setInverted(false);
 
-    rightFront = new PWMTalonSRX(Constants.rightFrontMotorPort);
-    addChild("RightFront", rightFront);
-    rightFront.setInverted(false);
+    rightFront = new CANSparkMax(Constants.canID[2], MotorType.kBrushed);
+    leftFront.setInverted(false);
 
-    rightRear = new PWMTalonSRX(Constants.rightRearMotorPort);
-    addChild("RightRear", rightRear);
-    rightRear.setInverted(false);
+    rightRear = new CANSparkMax(Constants.canID[3], MotorType.kBrushed);
+    leftFront.setInverted(false);
 
     drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     addChild("Drive", drive);
     drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
     drive.setMaxOutput(Constants.powerLimit);
+
+    // Encoders
+    leftFrontEncoder = leftFront.getAlternateEncoder(Type.kQuadrature, 8192);
+    leftRearEncoder = leftRear.getAlternateEncoder(Type.kQuadrature, 8192);
+    rightFrontEncoder = rightFront.getAlternateEncoder(Type.kQuadrature, 8192);
+    rightRearEncoder = rightRear.getAlternateEncoder(Type.kQuadrature, 8192);
+    
+    //DRIVE_ENCODERS = new MedianPIDSource(LEFT_FRONT_DRIVE_ENCODER, LEFT_BACK_DRIVE_ENCODER, RIGHT_FRONT_DRIVE_ENCODER, RIGHT_BACK_DRIVE_ENCODER);
 
     // To change the max power, you need to change it in the Constants.java file
     // if (partyMode) {
@@ -78,26 +87,32 @@ public class Drivetrain extends SubsystemBase {
   // Drive method for driving
   public void drive(double mainx, double mainy, double rotate) {
 
-    System.out.println(mainx+"X power");
-    System.out.println(mainy+"Y power");
-    System.out.println(mainy *= -1);
-    System.out.println(rotate+"rotate power");
-    System.out.println("the things printing");
-    drive.driveCartesian(mainx, mainy, rotate);
+
+    mainy *= -1;
+    drive.driveCartesian(mainy, mainx, rotate);
     SmartDashboard.putNumber("X Power: ", mainx);
     SmartDashboard.putNumber("Y Power: ", mainy);
     SmartDashboard.putNumber("Rotation Power: ", rotate);
+    
+
   }
+
+  public void getEncoderRate() {
+    // This is how we get the velocity from the motors. For future use!
+    leftFrontEncoder.getVelocity();
+    leftRearEncoder.getVelocity();
+    rightFrontEncoder.getVelocity();
+    rightRearEncoder.getVelocity();
+  }
+
+  public void getMotorVoltage() {
+    // This is how we get power draw from the motors I assume
+    leftFront.getBusVoltage();
+  }
+
+  public void encoderTest() {}
 
   public double Test(double test) {
     return 0;
-  }
-
-  public boolean getPartyMode() {
-    return partyMode;
-  }
-
-  public void setPartyMode(Boolean flag) {
-    partyMode = flag;
   }
 }
