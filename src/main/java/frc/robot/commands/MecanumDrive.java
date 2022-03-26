@@ -47,7 +47,6 @@ public class MecanumDrive extends CommandBase {
     else {
       m_drivetrain.drive(driverJoystick.getX(), driverJoystick.getY(), driverJoystick.getZ());
     };
-    m_drivetrain.encoderTest();
   }
 
   // Called once the command ends or is interrupted.

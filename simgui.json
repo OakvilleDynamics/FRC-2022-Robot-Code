@@ -26,6 +26,11 @@
         "window": {
           "visible": true
         }
+      },
+      "/LiveWindow/Drivetrain/Drive": {
+        "window": {
+          "visible": true
+        }
       }
     }
   },

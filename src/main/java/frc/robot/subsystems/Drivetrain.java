@@ -41,13 +41,13 @@ public class Drivetrain extends SubsystemBase {
     leftFront.setInverted(false);
 
     leftRear = new CANSparkMax(Constants.canID[1], MotorType.kBrushed);
-    leftFront.setInverted(false);
+    leftRear.setInverted(true);
 
     rightFront = new CANSparkMax(Constants.canID[2], MotorType.kBrushed);
-    leftFront.setInverted(false);
+    rightFront.setInverted(true);
 
     rightRear = new CANSparkMax(Constants.canID[3], MotorType.kBrushed);
-    leftFront.setInverted(false);
+    rightRear.setInverted(false);
 
     drive = new MecanumDrive(leftFront, leftRear, rightFront, rightRear);
     addChild("Drive", drive);
