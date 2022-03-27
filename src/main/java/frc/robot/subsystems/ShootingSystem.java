@@ -53,7 +53,8 @@ public class ShootingSystem extends SubsystemBase {
   // Ball shooting method
   public void shootPrep(double shootSpeed) {
     double mSpeed = ((shootSpeed * -1) + 1) / 2;
-    shooterMotor.set(1);
+    SmartDashboard.putNumber("Shoot Speed", mSpeed);
+    shooterMotor.set(mSpeed);
   }
 
   public void stopPrep() {

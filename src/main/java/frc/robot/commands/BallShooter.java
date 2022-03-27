@@ -42,12 +42,9 @@ public class BallShooter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // Since our balls velocity will most likely be decided through math from the distance measured by the limelight,
-    // we should probably make another command(?) where we take the distance from the limelight and do all the math.
-    // Then here, we can just take the value from that and pass it to the shooting subsystem.
 
     if (auxController.getRightBumper() == true) { // Set shooting motor to the speed we want whenever right bumper is pressed
-      m_shootingsystem.shootPrep(driverController.getRawAxis(4));
+      m_shootingsystem.shootPrep(driverController.getRawAxis(3));
     }
 
     if (auxController.getLeftBumper() == true) { // Stop shooting motor when left bumper pressed
@@ -67,8 +64,6 @@ public class BallShooter extends CommandBase {
     if (driverController.getRawButton(4) == true) {
       m_shootingsystem.stopClock();
     }
-
-    m_shootingsystem.testClock(auxController.getBButton());
   }
 
   // Called once the command ends or is interrupted.

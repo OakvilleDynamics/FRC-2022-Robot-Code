@@ -38,7 +38,8 @@
     "SmartDashboard": {
       "Drivetrain": {
         "open": true
-      }
+      },
+      "open": true
     }
   },
   "Plot": {
