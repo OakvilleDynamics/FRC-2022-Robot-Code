@@ -89,6 +89,8 @@ public class Drivetrain extends SubsystemBase {
       mainx = 0;
     } else if (mainy < 0.3 && mainy > -0.3) {
       mainy = 0;
+    } else if (rotate < 0.3 && rotate > 0.3) {
+      rotate = 0;
     }
     mainx *= -1;
     rotate *= -1;
