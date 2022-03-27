@@ -50,7 +50,6 @@ public class RobotContainer {
 
     // Configure default commands
     m_drivetrain.setDefaultCommand(new MecanumDrive(m_drivetrain));
-    m_limelight.setDefaultCommand(new Sensors(m_limelight));
     m_shootingsystem.setDefaultCommand(new BallShooter(m_shootingsystem));
     m_climbingsystem.setDefaultCommand(new ClimbElevator(m_climbingsystem));
     m_intakesystem.setDefaultCommand(new IntakeRamp(m_intakesystem));
