@@ -36,6 +36,7 @@ public class ShootingSystem extends SubsystemBase {
 
   boolean toggle = false;
   boolean atMax;
+  public double mSpeed;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
@@ -61,14 +62,22 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   // Ball shooting method
-  public void shootPrep(boolean bumperState, double shootSpeed) {
-    double mSpeed = ((shootSpeed * -1) + 1) / 2;
-    SmartDashboard.putNumber("Shoot Speed", mSpeed);
-    if (bumperState == true) {
-      shooterMotor.set(mSpeed);
-    } else if (bumperState == false) {
-      shooterMotor.set(0);
+  public void shootPrep(boolean aButton, boolean bButton, boolean xButton, boolean yButton) {
+
+    if (aButton) {
+      mSpeed = 0.25;
+    } else if (xButton) {
+      mSpeed = 0.5;
+    } else if (yButton) {
+      mSpeed = 0.75;
+    } else if (bButton) {
+      mSpeed = 1;
+    } else {
+      mSpeed = 0;
     }
+
+    SmartDashboard.putNumber("Shoot Speed", mSpeed);
+    shooterMotor.set(mSpeed);
   }
 
   public void clock(boolean clockState) {
@@ -105,10 +114,24 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
-  public void shooterCheck(double shootSpeed) {
+  public void shooterCheck(boolean aButton, boolean bButton, boolean xButton, boolean yButton) {
+
+    double sSpeed;
+
+    if (aButton) {
+      sSpeed = 0.25;
+    } else if (xButton) {
+      sSpeed = 0.5;
+    } else if (yButton) {
+      sSpeed = 0.75;
+    } else if (bButton) {
+      sSpeed = 1;
+    } else {
+      sSpeed = 0;
+    }
+
     double shooterVelocity = shooterEncoder.getVelocity();
     SmartDashboard.putNumber("Shooter Encoder Velocity", shooterVelocity);
-    double sSpeed = ((shootSpeed * -1) + 1) / 2;
 
     double maxSpeed = sSpeed * 10;
 
