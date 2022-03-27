@@ -7,7 +7,9 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxAlternateEncoder.Type;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PowerDistribution;
@@ -22,12 +24,17 @@ public class ShootingSystem extends SubsystemBase {
   private final CANSparkMax shooterMotor;
   private final VictorSPX clockMotor;
 
+  // Init encoders
+  private final RelativeEncoder shooterEncoder;
+
   // Init Power Distribution Panel
   private final PowerDistribution powerDistribution;
 
   // Init line followers
   private final AnalogInput bottomLine;
   private final AnalogInput topLine;
+
+  boolean toggle = false;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
@@ -46,29 +53,41 @@ public class ShootingSystem extends SubsystemBase {
     bottomLine = new AnalogInput(0);
     addChild("bottomLine", bottomLine);
 
+    shooterEncoder = shooterMotor.getAlternateEncoder(Type.kQuadrature, 8192);
+    double shooterVelocity = shooterEncoder.getVelocity();
+    SmartDashboard.putNumber("Shooter Encoder Velocity", shooterVelocity);
+
     double clockAmperage = powerDistribution.getCurrent(0);
     SmartDashboard.putNumber("Clock Motor Amperage", clockAmperage);
   }
 
   // Ball shooting method
-  public void shootPrep(double shootSpeed) {
+  public void shootPrep(boolean bumperState, double shootSpeed) {
     double mSpeed = ((shootSpeed * -1) + 1) / 2;
     SmartDashboard.putNumber("Shoot Speed", mSpeed);
-    shooterMotor.set(mSpeed);
+    if (bumperState == true) {
+      shooterMotor.set(mSpeed);
+    } else if (bumperState == false) {
+      shooterMotor.set(0);
+    }
   }
 
-  public void stopPrep() {
-    shooterMotor.stopMotor();
-  }
-
-  public void clock() {
-    clockMotor.set(ControlMode.PercentOutput, 0.05); // normal speed before ball resistance
-    if (powerDistribution.getCurrent(0) > 5) { // if more amperage is used to move the motor
-      clockMotor.set(ControlMode.PercentOutput, 0.02); // slow down motor
-      if (topLine.getValue() > 0 && bottomLine.getValue() > 0) { // if line followers see that ball in middle
-        clockMotor.set(ControlMode.PercentOutput, 0); // stop motor
+  public void clock(boolean clockState) {
+    if (clockState) {
+      if (toggle) {
+        if (powerDistribution.getCurrent(0) > 5) { // if more amperage is used to move the motor
+          clockMotor.set(ControlMode.PercentOutput, 0.02); // slow down motor
+          if (topLine.getValue() > 0 && bottomLine.getValue() > 0) { // if line followers see that ball in middle
+            clockMotor.set(ControlMode.PercentOutput, 0); // stop motor
+          }
+        }
+        toggle = false;
+      } else {
+        clockMotor.set(ControlMode.PercentOutput, 0);
+        toggle = true;
       }
     }
+    SmartDashboard.putBoolean("Clock State", toggle);
   }
 
   public void shoot(boolean triggerState) { // Move ball to shoot using clock motor
@@ -79,21 +98,11 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
-  public void stopShoot() {
-    clockMotor.set(ControlMode.PercentOutput, 0);
-  }
-
-  public void reject() {
-    clockMotor.set(ControlMode.PercentOutput, -0.5);
-  }
-
-  public void stopClock() {
-    clockMotor.set(ControlMode.PercentOutput, 0);
-  }
-
-  public void testClock(boolean testButtonState) {
-    while (testButtonState == true) {
-      clockMotor.set(ControlMode.PercentOutput, 0.5);
+  public void reject(boolean rejectState) {
+    if (rejectState == true) {
+      clockMotor.set(ControlMode.PercentOutput, -0.5);
+    } else {
+      clockMotor.set(ControlMode.PercentOutput, 0);
     }
   }
 

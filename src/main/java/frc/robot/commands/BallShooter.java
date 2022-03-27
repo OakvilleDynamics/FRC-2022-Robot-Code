@@ -43,27 +43,14 @@ public class BallShooter extends CommandBase {
   @Override
   public void execute() {
 
-    if (auxController.getRightBumper() == true) { // Set shooting motor to the speed we want whenever right bumper is pressed
-      m_shootingsystem.shootPrep(driverController.getRawAxis(3));
-    }
-
-    if (auxController.getLeftBumper() == true) { // Stop shooting motor when left bumper pressed
-      m_shootingsystem.stopPrep();
-    }
+    // Set shooting motor to the speed we want whenever right bumper is pressed
+    m_shootingsystem.shootPrep(auxController.getRightBumper(), driverController.getRawAxis(3));
 
     m_shootingsystem.shoot(driverController.getTrigger());
 
-    if (driverController.getRawButton(2) == true) {
-      m_shootingsystem.clock();
-    }
+    m_shootingsystem.clock(driverController.getRawButtonPressed(2));
 
-    if (driverController.getRawButton(3) == true) {
-      m_shootingsystem.reject();
-    }
-
-    if (driverController.getRawButton(4) == true) {
-      m_shootingsystem.stopClock();
-    }
+    m_shootingsystem.reject(driverController.getRawButton(3));
   }
 
   // Called once the command ends or is interrupted.
