@@ -46,11 +46,11 @@ public class ClimbingSystem extends SubsystemBase {
     }
 
     if (rightY > 0.25) { // Right stick up - Rotate elevator outward
-      liftTilt.set(ControlMode.PercentOutput, rightY*-0.3);
+      liftTilt.set(ControlMode.PercentOutput, rightY*0.5);
     }
 
     if (rightY < -0.25) { // Right stick down - Rotate elevator inward
-      liftTilt.set(ControlMode.PercentOutput, rightY*-0.3);
+      liftTilt.set(ControlMode.PercentOutput, rightY*0.5);
     }
 
     if (rightY > -0.25 && rightY < 0.25) {
