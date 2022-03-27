@@ -42,10 +42,10 @@ public class MecanumDrive extends CommandBase {
   public void execute() {
     // Runs a drive command on the driverController
     if (Constants.usingXboxController) {
-      m_drivetrain.drive(driverController.getLeftX(), driverController.getLeftY(), driverController.getRightY());
+      m_drivetrain.drive(driverController.getLeftX(), driverController.getLeftY(), driverController.getRightY(), driverJoystick.getRawAxis(3));
     } 
     else {
-      m_drivetrain.drive(driverJoystick.getX(), driverJoystick.getY(), driverJoystick.getZ());
+      m_drivetrain.drive(driverJoystick.getX(), driverJoystick.getY(), driverJoystick.getZ(), driverJoystick.getRawAxis(3));
     };
   }
 

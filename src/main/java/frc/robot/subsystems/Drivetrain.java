@@ -11,6 +11,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -53,7 +54,6 @@ public class Drivetrain extends SubsystemBase {
     addChild("Drive", drive);
     //drive.setSafetyEnabled(true);
     drive.setExpiration(0.1);
-    drive.setMaxOutput(Constants.powerLimit);
 
     // Encoders
     leftFrontEncoder = leftFront.getAlternateEncoder(Type.kQuadrature, 8192);
@@ -84,10 +84,18 @@ public class Drivetrain extends SubsystemBase {
   }
 
   // Drive method for driving
-  public void drive(double mainx, double mainy, double rotate) {
+  public void drive(double mainx, double mainy, double rotate, double speed) {
+    if (mainx < 0.3 && mainx > -0.3) {
+      mainx = 0;
+    } else if (mainy < 0.3 && mainy > -0.3) {
+      mainy = 0;
+    }
     mainx *= -1;
     rotate *= -1;
     drive.driveCartesian(mainy, mainx, rotate);
+    double maxSpeed = ((speed * -1) + 1) / 2;
+    drive.setMaxOutput(maxSpeed);
+    SmartDashboard.putNumber("Max Speed", maxSpeed);
   }
 
   public void getEncoderRate() {
