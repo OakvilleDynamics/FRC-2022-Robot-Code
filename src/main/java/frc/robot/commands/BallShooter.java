@@ -51,6 +51,8 @@ public class BallShooter extends CommandBase {
     m_shootingsystem.clock(driverController.getRawButtonPressed(2));
 
     m_shootingsystem.reject(driverController.getRawButton(3));
+
+    m_shootingsystem.shooterCheck(driverController.getRawAxis(3));
   }
 
   // Called once the command ends or is interrupted.

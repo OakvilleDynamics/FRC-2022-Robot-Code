@@ -35,6 +35,7 @@ public class ShootingSystem extends SubsystemBase {
   private final AnalogInput topLine;
 
   boolean toggle = false;
+  boolean atMax;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
@@ -54,8 +55,6 @@ public class ShootingSystem extends SubsystemBase {
     addChild("bottomLine", bottomLine);
 
     shooterEncoder = shooterMotor.getAlternateEncoder(Type.kQuadrature, 8192);
-    double shooterVelocity = shooterEncoder.getVelocity();
-    SmartDashboard.putNumber("Shooter Encoder Velocity", shooterVelocity);
 
     double clockAmperage = powerDistribution.getCurrent(0);
     SmartDashboard.putNumber("Clock Motor Amperage", clockAmperage);
@@ -104,6 +103,22 @@ public class ShootingSystem extends SubsystemBase {
     } else {
       clockMotor.set(ControlMode.PercentOutput, 0);
     }
+  }
+
+  public void shooterCheck(double shootSpeed) {
+    double shooterVelocity = shooterEncoder.getVelocity();
+    SmartDashboard.putNumber("Shooter Encoder Velocity", shooterVelocity);
+    double sSpeed = ((shootSpeed * -1) + 1) / 2;
+
+    double maxSpeed = sSpeed * 10;
+
+    if (shooterVelocity > maxSpeed) {
+      atMax = true;
+    } else {
+      atMax = false;
+    }
+    
+    SmartDashboard.putBoolean("Shooter Check", atMax);
   }
 
   @Override
