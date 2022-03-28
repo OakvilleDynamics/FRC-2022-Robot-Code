@@ -30,6 +30,8 @@ public class BallShooter extends CommandBase {
   private final Joystick driverController = new Joystick(Constants.driverControllerPort);
   private final XboxController auxController = new XboxController(Constants.auxControllerPort);
 
+  
+
   public BallShooter(ShootingSystem subsystem) {
     m_shootingsystem = subsystem;
     addRequirements(m_shootingsystem);
@@ -54,7 +56,7 @@ public class BallShooter extends CommandBase {
 
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
-    m_shootingsystem.intakerunning(auxController.getRawAxis(2), auxController.getRawAxis(3));
+    m_shootingsystem.intake(auxController.getRawAxis(2), auxController.getRawAxis(3), auxController.getAButton() );
   }
 
   // Called once the command ends or is interrupted.

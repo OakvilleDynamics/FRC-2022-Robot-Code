@@ -34,6 +34,10 @@ public class ShootingSystem extends SubsystemBase {
   private final AnalogInput bottomLine;
   private final AnalogInput topLine;
 
+  // Init intake motor
+  VictorSPX intake = new VictorSPX(Constants.canID[7]);
+
+
   boolean toggle = false;
   boolean atMax;
   public double mSpeed;
@@ -106,14 +110,19 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
-  public void intakerunning(double leftTrigger, double rightTrigger) {
-    if (leftTrigger > 0.25) {
-     clockMotor.set(ControlMode.PercentOutput, 0.25);
+ public void intake(double leftTrigger, double rightTrigger, boolean button) {
+        
+  if (leftTrigger > 0.25) {
+      intake.set(ControlMode.PercentOutput, -1);
+      clockMotor.set(ControlMode.PercentOutput, 0.25);
   } else if (rightTrigger > 0.25) {
-     clockMotor.set(ControlMode.PercentOutput, 0.25);
+      intake.set(ControlMode.PercentOutput, 1);
+      clockMotor.set(ControlMode.PercentOutput, 0.25);
+  } else {
+      intake.set(ControlMode.PercentOutput, 0);
+      clockMotor.set(ControlMode.PercentOutput, 0);
   }
- }
-  
+}
 
   public void reject(boolean rejectState) {
     if (rejectState == true) {
