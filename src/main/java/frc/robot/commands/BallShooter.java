@@ -48,7 +48,7 @@ public class BallShooter extends CommandBase {
     // Set shooting motor to the speed we want whenever right bumper is pressed
     m_shootingsystem.shootPrep(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
-    m_shootingsystem.shoot(driverController.getTrigger());
+    m_shootingsystem.shoot(driverController.getTrigger(), auxController.getRawAxis(2), auxController.getRawAxis(3));
 
     m_shootingsystem.clock(driverController.getRawButtonPressed(2));
 
@@ -56,7 +56,7 @@ public class BallShooter extends CommandBase {
 
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
-    m_shootingsystem.intake(auxController.getRawAxis(2), auxController.getRawAxis(3), auxController.getAButton() );
+    m_shootingsystem.intake(auxController.getRawAxis(2), auxController.getRawAxis(3), auxController.getAButton(), driverController.getTrigger());
   }
 
   // Called once the command ends or is interrupted.
