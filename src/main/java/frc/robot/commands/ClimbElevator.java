@@ -15,17 +15,27 @@ Right stick up/down - Rotate elevator inward/outward
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants;
 import frc.robot.subsystems.ClimbingSystem;
 
 public class ClimbElevator extends CommandBase {
 
+  private final Joystick driverJoystick =
+      new Joystick(Constants.driverControllerPort);
+      
   private final XboxController auxController =
       new XboxController(Constants.auxControllerPort);
 
   private final ClimbingSystem m_climbingsystem;
+
+  JoystickButton joystickSeven = new JoystickButton(driverJoystick, 7);
+  JoystickButton joystickEight = new JoystickButton(driverJoystick, 8);
+  
 
   /** Creates a new ClimbElevator. */
  public ClimbElevator(ClimbingSystem subsystem) {
@@ -41,6 +51,8 @@ public class ClimbElevator extends CommandBase {
   @Override
   public void execute() {
     m_climbingsystem.climb(auxController.getLeftY(), auxController.getRightY());
+
+  
   }
 
   // Called once the command ends or is interrupted.

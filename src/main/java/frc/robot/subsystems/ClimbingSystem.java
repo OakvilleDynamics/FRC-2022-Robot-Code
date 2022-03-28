@@ -13,6 +13,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -21,6 +23,7 @@ public class ClimbingSystem extends SubsystemBase {
   // Init elevator motors
   VictorSPX liftWench = new VictorSPX(Constants.canID[5]);
   VictorSPX liftTilt = new VictorSPX(Constants.canID[6]);
+  Servo clampServo = new Servo(0);
 
   /** Creates a new ClimbingSystem. */
   public ClimbingSystem() {}
@@ -56,5 +59,15 @@ public class ClimbingSystem extends SubsystemBase {
     if (rightY > -0.25 && rightY < 0.25) {
       liftTilt.set(ControlMode.Velocity, 0);
     }
+  }
+
+  public Command openClamp() {
+    clampServo.set(0);
+    return null;
+  }
+
+  public Command closeClamp() {
+    clampServo.set(100);
+    return null;
   }
 }
