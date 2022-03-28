@@ -89,11 +89,11 @@ public class Drivetrain extends SubsystemBase {
       mainx = 0;
     } else if (mainy < 0.3 && mainy > -0.3) {
       mainy = 0;
-    } else if (rotate < 0.3 && rotate > 0.3) {
+    } else if (rotate < 0.5 && rotate > -0.5) {
       rotate = 0;
     }
     mainx *= -1;
-    rotate *= -1;
+    rotate *= -0.2;
     drive.driveCartesian(mainy, mainx, rotate);
     double maxSpeed = ((speed * -1) + 1) / 2;
     drive.setMaxOutput(maxSpeed);

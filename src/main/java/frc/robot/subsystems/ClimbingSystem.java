@@ -34,11 +34,11 @@ public class ClimbingSystem extends SubsystemBase {
     // 0.25 axis deadzone both ways
     // 0.3 multiplier is for safety purposes right now
     if (leftY > 0.25) { // Left stick up - Extend elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*0.75);
+      liftWench.set(ControlMode.PercentOutput, leftY*-1);
     }
 
     if (leftY < -0.25) { // Left stick downward - Retract elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*0.75);
+      liftWench.set(ControlMode.PercentOutput, leftY*-1);
     }
 
     if (leftY > -0.25 && leftY < 0.25) {
