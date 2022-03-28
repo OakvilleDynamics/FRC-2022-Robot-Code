@@ -106,6 +106,15 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
+  public void intakerunning(double leftTrigger, double rightTrigger) {
+    if (leftTrigger > 0.25) {
+     clockMotor.set(ControlMode.PercentOutput, 0.25);
+  } else if (rightTrigger > 0.25) {
+     clockMotor.set(ControlMode.PercentOutput, 0.25);
+  }
+ }
+  
+
   public void reject(boolean rejectState) {
     if (rejectState == true) {
       clockMotor.set(ControlMode.PercentOutput, -0.5);

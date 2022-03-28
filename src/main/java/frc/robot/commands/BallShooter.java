@@ -53,6 +53,8 @@ public class BallShooter extends CommandBase {
     m_shootingsystem.reject(driverController.getRawButton(3));
 
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
+
+    m_shootingsystem.intakerunning(auxController.getRawAxis(2), auxController.getRawAxis(3));
   }
 
   // Called once the command ends or is interrupted.
