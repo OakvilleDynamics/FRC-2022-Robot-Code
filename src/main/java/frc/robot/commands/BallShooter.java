@@ -56,6 +56,7 @@ public class BallShooter extends CommandBase {
     m_shootingsystem.clock(auxController.getRightBumper());
 
     m_shootingsystem.reject(driverController.getRawButton(3));
+    m_shootingsystem.reject(auxController.getLeftBumper());
 
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
