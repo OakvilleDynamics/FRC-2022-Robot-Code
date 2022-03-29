@@ -32,7 +32,7 @@ public class RobotContainer {
   public final LimeLight m_limelight = new LimeLight();
   public final ShootingSystem m_shootingsystem = new ShootingSystem();
   public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
-  public final IntakeSystem m_intakesystem = new IntakeSystem();
+ 
 
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,7 +52,7 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(new MecanumDrive(m_drivetrain));
     m_shootingsystem.setDefaultCommand(new BallShooter(m_shootingsystem));
     m_climbingsystem.setDefaultCommand(new ClimbElevator(m_climbingsystem));
-    m_intakesystem.setDefaultCommand(new IntakeRamp(m_intakesystem));
+   
     
     // Configure autonomous sendable chooser
     m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
