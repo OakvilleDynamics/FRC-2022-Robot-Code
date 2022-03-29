@@ -111,8 +111,6 @@ public class ShootingSystem extends SubsystemBase {
     } else if (leftTrigger < 0.25 && rightTrigger < 0.25 && triggerState == false) {
       clockMotor.set(ControlMode.PercentOutput, 0);
       clockMotorSet = 0;
-    } else {
-      clockMotorSet = 99;
     }
     SmartDashboard.putNumber("clockMotorSet", clockMotorSet);
   }
@@ -131,8 +129,6 @@ public class ShootingSystem extends SubsystemBase {
       intake.set(ControlMode.PercentOutput, 0);
       clockMotor.set(ControlMode.PercentOutput, 0);
       intakeMotorSet = 0;
-  } else {
-    intakeMotorSet = 99;
   }
   SmartDashboard.putNumber("intakeMotorSet", intakeMotorSet);
 }
