@@ -106,10 +106,10 @@ public class ShootingSystem extends SubsystemBase {
   }
 
   public void shoot(boolean triggerState, double leftTrigger, double rightTrigger) { // Move ball to shoot using clock motor
-    if (triggerState == true) {
+    if (triggerState) {
       clockMotor.set(ControlMode.PercentOutput, 0.25);
       clockMotorSet = 0.25;
-    } else if (leftTrigger < 0.25 && rightTrigger < 0.25 && triggerState == false) {
+    } else if (leftTrigger < 0.25 && rightTrigger < 0.25) {
       clockMotor.set(ControlMode.PercentOutput, 0);
       clockMotorSet = 0;
     }
@@ -126,7 +126,7 @@ public class ShootingSystem extends SubsystemBase {
       intake.set(ControlMode.PercentOutput, 1);
       clockMotor.set(ControlMode.PercentOutput, 0.25);
       intakeMotorSet = 0.25;
-  } else if (triggerState == false) {
+  } else if (!triggerState) {
       intake.set(ControlMode.PercentOutput, 0);
       clockMotor.set(ControlMode.PercentOutput, 0);
       intakeMotorSet = 0;
@@ -135,7 +135,7 @@ public class ShootingSystem extends SubsystemBase {
 }
 
   public void reject(boolean rejectState) {
-    if (rejectState == true) {
+    if (rejectState) {
       clockMotor.set(ControlMode.PercentOutput, -0.5);
     } else {
       clockMotor.set(ControlMode.PercentOutput, 0);
@@ -194,7 +194,7 @@ public class ShootingSystem extends SubsystemBase {
         clockMotor.set(ControlMode.PercentOutput, -0.25);
         toggle = true;
     }
-    if (toggle == true) {
+    if (toggle) {
         if (System.currentTimeMillis() - startShootTimer > 500) {
             clockMotor.set(ControlMode.PercentOutput, 1);
         }
