@@ -19,6 +19,7 @@
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/Auto Mode": "String Chooser",
       "/SmartDashboard/Autonomous Command": "Command",
+      "/SmartDashboard/Autonomous Mode": "String Chooser",
       "/SmartDashboard/Drivetrain": "Subsystem"
     },
     "windows": {
