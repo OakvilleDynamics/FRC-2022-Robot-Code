@@ -74,5 +74,5 @@ jobs:
       # uses: JetBrains/qodana-action@9e56346b427d9ed086178d0e60e424c451979261
       uses: JetBrains/qodana-action@v5.0.2
       with:
-        sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
+        args: --fail-threshold,5
         fail-threshold: 5
