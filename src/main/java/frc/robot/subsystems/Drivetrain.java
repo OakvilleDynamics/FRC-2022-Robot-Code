@@ -117,6 +117,28 @@ public class Drivetrain extends SubsystemBase {
 
   public void encoderTest() {}
 
+  // Drive
+  public void autoDrive(double y, double x, double rotate, double speed) {
+    drive.driveCartesian(y, x, rotate);
+    drive.setMaxOutput(speed);
+  }
+
+  // Stop driving
+  public void autoStopDrive() {
+      drive.stopMotor();
+  }
+
+  public void resetEncoders() {
+    leftFrontEncoder.setPosition(0);
+    leftRearEncoder.setPosition(0);
+    rightFrontEncoder.setPosition(0);
+    rightRearEncoder.setPosition(0);
+  }
+
+  public double getEncoderDistances() {
+    return (leftFrontEncoder.getPosition() + leftRearEncoder.getPosition() + rightFrontEncoder.getPosition() + rightRearEncoder.getPosition()) / 4.0;
+  }
+
   public double Test(double test) {
     return 0;
   }

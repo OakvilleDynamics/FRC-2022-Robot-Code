@@ -38,11 +38,12 @@ public class ShootingSystem extends SubsystemBase {
   VictorSPX intake = new VictorSPX(Constants.canID[7]);
 
 
-  boolean toggle = false;
+  boolean toggle;
   boolean atMax;
   public double mSpeed;
   double clockMotorSet;
   double intakeMotorSet;
+  double startShootTimer;
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
@@ -175,6 +176,46 @@ public class ShootingSystem extends SubsystemBase {
     SmartDashboard.putBoolean("Shooter Check", atMax);
   }
 
+  public void autoIntakeOn() {
+    intake.set(ControlMode.PercentOutput, 0.25);
+  }
+
+  public void autoIntakeOff() {
+    intake.set(ControlMode.PercentOutput, 0);
+  }
+
+  public void autoShooterMotorOn() {
+    shooterMotor.set(1);
+  }
+
+  public void autoShooterMotorOff() {
+    shooterMotor.set(0);
+  }
+
+  public void autoShoot(boolean trigger) { // Move ball to shoot using clock motor
+    if (trigger) {
+        startShootTimer = System.currentTimeMillis();
+        clockMotor.set(ControlMode.PercentOutput, -0.25);
+        toggle = true;
+    }
+    if (toggle == true) {
+        if (System.currentTimeMillis() - startShootTimer > 500) {
+            clockMotor.set(ControlMode.PercentOutput, 1);
+        }
+        if (System.currentTimeMillis() - startShootTimer > 1500) {
+            clockMotor.set(ControlMode.PercentOutput, 0);
+            toggle = false;
+        }
+    }
+  }
+
+  public void autoClockOn() {
+    clockMotor.set(ControlMode.PercentOutput, 0.25);
+  }
+
+  public void autoClockOff() {
+    clockMotor.set(ControlMode.PercentOutput, 0);
+  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

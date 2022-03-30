@@ -13,6 +13,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.autonomous.SimpleDrive;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -32,18 +33,18 @@ public class RobotContainer {
   public final LimeLight m_limelight = new LimeLight();
   public final ShootingSystem m_shootingsystem = new ShootingSystem();
   public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
- 
+
+  // Autonomous Commands
+
+  private final Command m_simpledrive = new SimpleDrive(m_drivetrain);
 
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  private RobotContainer() {
+  public RobotContainer() {
     // Smartdashboard Subsystems
     SmartDashboard.putData(m_drivetrain);
-
-    // SmartDashboard Buttons
-    SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
 
     // Configure the button bindings
     configureButtonBindings();
@@ -53,12 +54,10 @@ public class RobotContainer {
     m_shootingsystem.setDefaultCommand(new BallShooter(m_shootingsystem));
     m_climbingsystem.setDefaultCommand(new ClimbElevator(m_climbingsystem));
    
-    
     // Configure autonomous sendable chooser
-    m_chooser.setDefaultOption("Autonomous Command", new AutonomousCommand());
+    m_chooser.setDefaultOption("Simple Auto Drive", m_simpledrive);
 
-    SmartDashboard.putData("Auto Mode", m_chooser);
-    
+    SmartDashboard.putData("Autonomous Mode", m_chooser);    
   }
   public static RobotContainer getInstance() {
     return m_robotContainer;
