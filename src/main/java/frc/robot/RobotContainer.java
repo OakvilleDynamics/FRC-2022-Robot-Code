@@ -13,6 +13,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.autonomous.DriveShoot;
 import frc.robot.autonomous.SimpleDrive;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
@@ -37,6 +38,8 @@ public class RobotContainer {
 
   private final Command m_simpledrive = new SimpleDrive(m_drivetrain);
 
+  private final Command m_driveshoot = new DriveShoot(m_drivetrain, m_shootingsystem);
+
   // A chooser for autonomous commands
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -55,8 +58,9 @@ public class RobotContainer {
    
     // Configure autonomous sendable chooser
     m_chooser.setDefaultOption("Simple Auto Drive", m_simpledrive);
+    m_chooser.addOption("Drive & Shoot", m_driveshoot);
 
-    SmartDashboard.putData("Autonomous Mode", m_chooser);    
+    SmartDashboard.putData("Autonomous", m_chooser);    
   }
   public static RobotContainer getInstance() {
     return m_robotContainer;
