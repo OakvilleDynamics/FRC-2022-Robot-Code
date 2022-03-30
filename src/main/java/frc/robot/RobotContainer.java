@@ -29,7 +29,6 @@ public class RobotContainer {
 
   // The robot's subsystems
   public final Drivetrain m_drivetrain = new Drivetrain();
-  public final LimeLight m_limelight = new LimeLight();
   public final ShootingSystem m_shootingsystem = new ShootingSystem();
   public final ClimbingSystem m_climbingsystem = new ClimbingSystem();
  
