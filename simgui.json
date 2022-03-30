@@ -18,6 +18,7 @@
       "/LiveWindow/ShootingSystem/Shooter": "Motor Controller",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
       "/SmartDashboard/Auto Mode": "String Chooser",
+      "/SmartDashboard/Autonomous": "String Chooser",
       "/SmartDashboard/Autonomous Command": "Command",
       "/SmartDashboard/Autonomous Mode": "String Chooser",
       "/SmartDashboard/Drivetrain": "Subsystem"

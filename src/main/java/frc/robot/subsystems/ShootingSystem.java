@@ -172,20 +172,12 @@ public class ShootingSystem extends SubsystemBase {
     SmartDashboard.putBoolean("Shooter Check", atMax);
   }
 
-  public void autoIntakeOn() {
-    intake.set(ControlMode.PercentOutput, 0.25);
+  public void autoIntake(double speed) {
+    intake.set(ControlMode.PercentOutput, speed);
   }
 
-  public void autoIntakeOff() {
-    intake.set(ControlMode.PercentOutput, 0);
-  }
-
-  public void autoShooterMotorOn() {
-    shooterMotor.set(1);
-  }
-
-  public void autoShooterMotorOff() {
-    shooterMotor.set(0);
+  public void autoShootMotor(double speed) {
+    shooterMotor.set(speed);
   }
 
   public void autoShoot(boolean trigger) { // Move ball to shoot using clock motor
@@ -205,13 +197,10 @@ public class ShootingSystem extends SubsystemBase {
     }
   }
 
-  public void autoClockOn() {
-    clockMotor.set(ControlMode.PercentOutput, 0.25);
+  public void autoClock(double speed) {
+    clockMotor.set(ControlMode.PercentOutput, speed);
   }
 
-  public void autoClockOff() {
-    clockMotor.set(ControlMode.PercentOutput, 0);
-  }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
