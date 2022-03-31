@@ -44,6 +44,8 @@ public class ShootingSystem extends SubsystemBase {
   double clockMotorSet;
   double intakeMotorSet;
   double startShootTimer;
+  double shootMethod;
+  
 
   /** Creates a new ShootingSystem. */
   public ShootingSystem() {
@@ -87,33 +89,49 @@ public class ShootingSystem extends SubsystemBase {
     shooterMotor.set(mSpeed);
   }
 
-  public void clock(boolean clockState) {
-    if (clockState) {
-      if (toggle) {
-        if (powerDistribution.getCurrent(0) > 5) { // if more amperage is used to move the motor
-          clockMotor.set(ControlMode.PercentOutput, 0.02); // slow down motor
-          if (topLine.getValue() > 0 && bottomLine.getValue() > 0) { // if line followers see that ball in middle
-            clockMotor.set(ControlMode.PercentOutput, 0); // stop motor
-          }
-        }
-        toggle = false;
-      } else {
+  public void clock(boolean trigger) {
+    if (trigger) {
+      clockMotor.set(ControlMode.PercentOutput, 0.25);
+      toggle = true;
+    }
+    if (toggle) {
+      clockMotor.set(ControlMode.PercentOutput, 0);
+      toggle = false;
+    }
+  }
+
+  public void shoot(boolean trigger) { // Move ball to shoot using clock motor
+  
+    if (trigger) {
+      startShootTimer = System.currentTimeMillis();
+      clockMotor.set(ControlMode.PercentOutput, -0.25);
+      shootMethod = -0.25;
+      toggle = true;
+    }
+    if (toggle == true) {
+      if (System.currentTimeMillis() - startShootTimer > 500) {
+        clockMotor.set(ControlMode.PercentOutput, 1);
+        shootMethod = 1;
+      }
+      if (System.currentTimeMillis() - startShootTimer > 1500) {
         clockMotor.set(ControlMode.PercentOutput, 0);
-        toggle = true;
+        shootMethod = 0;
+        toggle = false;
       }
     }
-    SmartDashboard.putBoolean("Clock State", toggle);
+    SmartDashboard.putNumber("Shoot Method", shootMethod);
   }
 
   public void shoot(boolean triggerState, double leftTrigger, double rightTrigger) { // Move ball to shoot using clock motor
     if (triggerState) {
       clockMotor.set(ControlMode.PercentOutput, 0.25);
-      clockMotorSet = 0.25;
     } else if (leftTrigger < 0.25 && rightTrigger < 0.25) {
       clockMotor.set(ControlMode.PercentOutput, 0);
-      clockMotorSet = 0;
     }
-    SmartDashboard.putNumber("clockMotorSet", clockMotorSet);
+  }
+  public void clockSet(double cSpeed) {
+    clockMotor.set(ControlMode.PercentOutput, cSpeed);
+    SmartDashboard.putNumber("clockMotorSet", cSpeed);
   }
 
  public void intake(double leftTrigger, double rightTrigger, boolean button, boolean triggerState) {

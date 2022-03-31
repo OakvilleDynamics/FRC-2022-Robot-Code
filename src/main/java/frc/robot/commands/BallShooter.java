@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShootingSystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import frc.robot.Constants;
 
 public class BallShooter extends CommandBase {
@@ -30,7 +32,7 @@ public class BallShooter extends CommandBase {
   private final Joystick driverController = new Joystick(Constants.driverControllerPort);
   private final XboxController auxController = new XboxController(Constants.auxControllerPort);
 
-  
+  Trigger trigger = new JoystickButton(driverController, 1);
 
   public BallShooter(ShootingSystem subsystem) {
     m_shootingsystem = subsystem;
@@ -48,11 +50,13 @@ public class BallShooter extends CommandBase {
     // Set shooting motor to the speed we want whenever right bumper is pressed
     m_shootingsystem.shootPrep(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
-    m_shootingsystem.shoot(driverController.getTrigger(), auxController.getRawAxis(2), auxController.getRawAxis(3));
+    m_shootingsystem.shoot(driverController.getTrigger());
 
     m_shootingsystem.clock(driverController.getRawButtonPressed(2));
+    m_shootingsystem.clock(auxController.getRightBumper());
 
     m_shootingsystem.reject(driverController.getRawButton(3));
+    m_shootingsystem.reject(auxController.getLeftBumper());
 
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
