@@ -24,14 +24,12 @@ public class DriveDistance extends CommandBase {
         m_drive.autoDrive(m_speed, 0, 0, 0);
         startTime = System.currentTimeMillis();
         endTime = startTime + m_time;
-        System.out.println("Auto Stage 1");
     }
 
     // Called repeatedly when this command is scheduled to run
     public void execute() {
         m_drive.autoDrive(m_speed, 0, 0, 0);
         simpleDriveStatus = 2;
-        System.out.println("Auto Stage 2");
     }
 
     // Make this return true when you want the command to no longer run
@@ -41,7 +39,6 @@ public class DriveDistance extends CommandBase {
 
     // Called once after isFinished returns true
     public void end(boolean interrupted) {
-        System.out.println("Auto Stage 3");
         m_drive.autoStopDrive();
     }
 }
