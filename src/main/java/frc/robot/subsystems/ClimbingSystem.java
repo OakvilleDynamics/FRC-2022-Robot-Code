@@ -14,6 +14,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -24,6 +25,15 @@ public class ClimbingSystem extends SubsystemBase {
   VictorSPX liftWench = new VictorSPX(Constants.canID[5]);
   VictorSPX liftTilt = new VictorSPX(Constants.canID[6]);
   Servo clampServo = new Servo(0);
+  Servo elevatorServo = new Servo(1);
+  Servo testServo = new Servo(2);
+  //clampServo.kDefaultMaxServoPWM(3.3);
+  
+
+
+  double clampServoAngle;
+  double elevatorServoAngle;
+  double testServoAngle;
 
   /** Creates a new ClimbingSystem. */
   public ClimbingSystem() {}
@@ -37,11 +47,11 @@ public class ClimbingSystem extends SubsystemBase {
     // 0.25 axis deadzone both ways
     // 0.3 multiplier is for safety purposes right now
     if (leftY > 0.25) { // Left stick up - Extend elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*-1);
+      liftWench.set(ControlMode.PercentOutput, leftY);
     }
 
     if (leftY < -0.25) { // Left stick downward - Retract elevator
-      liftWench.set(ControlMode.PercentOutput, leftY*-1);
+      liftWench.set(ControlMode.PercentOutput, leftY);
     }
 
     if (leftY > -0.25 && leftY < 0.25) {
@@ -61,13 +71,48 @@ public class ClimbingSystem extends SubsystemBase {
     }
   }
 
-  public Command openClamp() {
-    clampServo.set(0);
-    return null;
+  public void openClamp(boolean trigger) {
+    if (trigger) {
+      clampServo.set(1);
+    }
   }
 
-  public Command closeClamp() {
-    clampServo.set(100);
-    return null;
+  public void closeClamp(boolean trigger) {
+    if (trigger) {
+      clampServo.set(0);
+    }
+  }
+
+
+  /* public void openServo(boolean trigger) {
+    if (trigger) {
+      elevatorServo.set(0.3);
+    }
+  }
+
+  public void closeServo(boolean trigger) {
+    if (trigger) {
+      elevatorServo.set(0.4);
+    }
+  }
+  
+  public void stopServo(boolean trigger) {
+    if (trigger) {
+      elevatorServo.setSpeed(0);
+    }
+  } */
+
+  public void getServos() {
+    clampServo.getRaw();
+    SmartDashboard.putNumber("raw serv", clampServo.getRaw());  
+    clampServoAngle = clampServo.get();
+    elevatorServoAngle = elevatorServo.getAngle();
+    testServoAngle = testServo.getAngle();
+    SmartDashboard.putNumber("Clamp Servo", clampServoAngle);
+    SmartDashboard.putNumber("Elevator Servo", elevatorServoAngle);
+    SmartDashboard.putNumber("test ser", testServoAngle);
+    SmartDashboard.putData(clampServo);
+    SmartDashboard.putData(elevatorServo);
+    SmartDashboard.putData(testServo);
   }
 }

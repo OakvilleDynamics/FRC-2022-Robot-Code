@@ -50,8 +50,13 @@ public class ClimbElevator extends CommandBase {
   @Override
   public void execute() {
     m_climbingsystem.climb(auxController.getLeftY(), auxController.getRightY());
-    joystickSeven.whenPressed(m_climbingsystem.openClamp());
-    joystickEight.whenPressed(m_climbingsystem.closeClamp());
+    //joystickSeven.whenPressed(m_climbingsystem.openClamp());
+    //joystickEight.whenPressed(m_climbingsystem.closeClamp());
+    m_climbingsystem.openClamp(driverJoystick.getRawButton(7));
+    m_climbingsystem.closeClamp(driverJoystick.getRawButton(8));
+    // m_climbingsystem.openServo(driverJoystick.getRawButton(11));
+    // m_climbingsystem.closeServo(driverJoystick.getRawButton(12));
+    // m_climbingsystem.stopServo(driverJoystick.getRawButton(10));
   }
 
   // Called once the command ends or is interrupted.
