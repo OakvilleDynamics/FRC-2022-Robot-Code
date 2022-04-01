@@ -9,8 +9,10 @@ import frc.robot.subsystems.ShootingSystem;
 public class DriveShoot extends SequentialCommandGroup {
     public DriveShoot(Drivetrain autoDrive, ShootingSystem autoShoot) {
         addCommands(
-            new autoShootBall(1, 333, autoShoot),
-            new DriveDistance(1000, 0.45, autoDrive)
+            new DriveDistance(1300, -0.45, autoDrive),
+            new autoShootBall(1, 5000, autoShoot),
+            new DriveDistance(300, 0.75, autoDrive),
+            new DriveDistance(300, -0.75, autoDrive)
         );
     }
 }

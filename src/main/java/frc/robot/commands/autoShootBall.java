@@ -11,6 +11,7 @@ public class autoShootBall extends CommandBase {
     double endTime;
     double delayTime;
     double reverseTime;
+    String autoShootBallStage;
 
 
     public autoShootBall(double speed, double clockTime, ShootingSystem shoot) {
@@ -22,11 +23,12 @@ public class autoShootBall extends CommandBase {
 
     // Called just before this command runs for the first time
     public void initialize() {
-        m_shoot.autoClock(-0.25);
+        m_shoot.autoClock(0);
         m_shoot.autoShootMotor(m_speed);
         startTime = System.currentTimeMillis();
         reverseTime = startTime + m_clockTime;
-        endTime = reverseTime + 1000;
+        endTime = reverseTime + 4000;
+        System.out.println("autoShootBall Init");
     }
 
     // Called repeatedly when this command is scheduled to run
@@ -34,6 +36,7 @@ public class autoShootBall extends CommandBase {
         if (System.currentTimeMillis() >= reverseTime) {
             m_shoot.autoClock(1.0);
         }
+        System.out.println("autoShootBall Execute");
     }
 
     // Make this return true when you want the command to no longer run
@@ -45,5 +48,6 @@ public class autoShootBall extends CommandBase {
     public void end(boolean interrupted) {
         m_shoot.autoClock(0);
         m_shoot.autoShootMotor(0);
+        System.out.println("autoShootBall End");
     }
 }
