@@ -91,12 +91,9 @@ public class ShootingSystem extends SubsystemBase {
 
   public void clock(boolean trigger) {
     if (trigger) {
-      clockMotor.set(ControlMode.PercentOutput, 0.25);
-      toggle = true;
-    }
-    if (toggle) {
+      clockMotor.set(ControlMode.PercentOutput, 1);
+    } else {
       clockMotor.set(ControlMode.PercentOutput, 0);
-      toggle = false;
     }
   }
 
@@ -104,7 +101,7 @@ public class ShootingSystem extends SubsystemBase {
   
     if (trigger) {
       startShootTimer = System.currentTimeMillis();
-      clockMotor.set(ControlMode.PercentOutput, -0.25);
+      clockMotor.set(ControlMode.PercentOutput, -0.5);
       shootMethod = -0.25;
       toggle = true;
     }
@@ -122,19 +119,12 @@ public class ShootingSystem extends SubsystemBase {
     SmartDashboard.putNumber("Shoot Method", shootMethod);
   }
 
-  public void shoot(boolean triggerState, double leftTrigger, double rightTrigger) { // Move ball to shoot using clock motor
-    if (triggerState) {
-      clockMotor.set(ControlMode.PercentOutput, 0.25);
-    } else if (leftTrigger < 0.25 && rightTrigger < 0.25) {
-      clockMotor.set(ControlMode.PercentOutput, 0);
-    }
-  }
   public void clockSet(double cSpeed) {
     clockMotor.set(ControlMode.PercentOutput, cSpeed);
     SmartDashboard.putNumber("clockMotorSet", cSpeed);
   }
 
- public void intake(double leftTrigger, double rightTrigger, boolean button, boolean triggerState) {
+ public void intake(double leftTrigger, double rightTrigger, boolean trigger) {
         
   if (leftTrigger > 0.25) {
       intake.set(ControlMode.PercentOutput, -1);
@@ -144,10 +134,9 @@ public class ShootingSystem extends SubsystemBase {
       intake.set(ControlMode.PercentOutput, 1);
       clockMotor.set(ControlMode.PercentOutput, 0.25);
       intakeMotorSet = 0.25;
-  } else if (!triggerState) {
-      intake.set(ControlMode.PercentOutput, 0);
-      clockMotor.set(ControlMode.PercentOutput, 0);
-      intakeMotorSet = 0;
+  } else if (!trigger) {
+    intake.set(ControlMode.PercentOutput, 0);
+    clockMotor.set(ControlMode.PercentOutput, 0);
   }
   SmartDashboard.putNumber("intakeMotorSet", intakeMotorSet);
 }
@@ -155,6 +144,14 @@ public class ShootingSystem extends SubsystemBase {
   public void reject(boolean rejectState) {
     if (rejectState) {
       clockMotor.set(ControlMode.PercentOutput, -0.5);
+    } else {
+      clockMotor.set(ControlMode.PercentOutput, 0);
+    }
+  }
+
+  public void setClock(boolean rejectState) {
+    if (rejectState) {
+      clockMotor.set(ControlMode.PercentOutput, 1);
     } else {
       clockMotor.set(ControlMode.PercentOutput, 0);
     }

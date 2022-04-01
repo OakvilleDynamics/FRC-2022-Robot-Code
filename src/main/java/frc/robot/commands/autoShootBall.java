@@ -3,7 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShootingSystem;
 
-public class ShootBall extends CommandBase {
+public class autoShootBall extends CommandBase {
     private final ShootingSystem m_shoot;
     private final double m_speed;
     private final double m_clockTime;
@@ -13,7 +13,7 @@ public class ShootBall extends CommandBase {
     double reverseTime;
 
 
-    public ShootBall(double speed, double clockTime, ShootingSystem shoot) {
+    public autoShootBall(double speed, double clockTime, ShootingSystem shoot) {
         m_shoot = shoot;
         m_clockTime = clockTime;
         m_speed = speed;

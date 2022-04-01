@@ -7,7 +7,9 @@ import frc.robot.subsystems.Drivetrain;
 public class SimpleDrive extends SequentialCommandGroup {
     public SimpleDrive(Drivetrain autoDrive) {
         addCommands(
-            new DriveDistance(1000, 0.45, autoDrive)
+            new DriveDistance(2500, 0.45, autoDrive),
+            new DriveDistance(200, -0.5, autoDrive),
+            new DriveDistance(200, 0.5, autoDrive)
         );
     }
 }

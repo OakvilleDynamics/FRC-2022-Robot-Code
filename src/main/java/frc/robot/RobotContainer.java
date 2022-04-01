@@ -68,7 +68,7 @@ public class RobotContainer {
     m_chooser.addOption("Stationary Intake", m_standintake);
     m_chooser.addOption("Moving Intake", m_moveintake);
 
-    SmartDashboard.putData("Autonomous", m_chooser);    
+    SmartDashboard.putData("Auto Mode", m_chooser);    
   }
   public static RobotContainer getInstance() {
     return m_robotContainer;

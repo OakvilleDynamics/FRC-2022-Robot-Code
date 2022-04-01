@@ -14,21 +14,20 @@ public class DriveDistance extends CommandBase {
     public DriveDistance(double time, double speed, Drivetrain drive) {
         m_time = time;
         m_drive = drive;
-        m_speed = speed;
+        m_speed = speed * -1;
         addRequirements(m_drive);
     }
 
     // Called just before this command runs for the first time
     public void initialize() {
-        m_drive.resetEncoders();
-        m_drive.autoDrive(m_speed, 0, 0, 0);
+        m_drive.autoDrive(m_speed, 0, 0, 1);
         startTime = System.currentTimeMillis();
         endTime = startTime + m_time;
     }
 
     // Called repeatedly when this command is scheduled to run
     public void execute() {
-        m_drive.autoDrive(m_speed, 0, 0, 0);
+        m_drive.autoDrive(m_speed, 0, 0, 1);
         simpleDriveStatus = 2;
     }
 
