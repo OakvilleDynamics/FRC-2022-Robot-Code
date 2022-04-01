@@ -10,6 +10,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -120,6 +121,10 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void encoderTest() {}
+
+  public void startCamera() {
+    CameraServer.startAutomaticCapture(0);
+  }
 
   // Drive
   public void autoDrive(double y, double x, double rotate, double speed) {

@@ -211,6 +211,12 @@ public class ShootingSystem extends SubsystemBase {
         }
     }
   }
+  public void getShooterSpeed() {
+    double shooterSpeed = shooterEncoder.getVelocity();
+    SmartDashboard.putNumber("ShootMotorSpeed", shooterSpeed);
+    double motorSet = shooterMotor.get();
+    SmartDashboard.putNumber("ShootMotorMeas", motorSet);
+  }
 
   public void autoClock(double speed) {
     clockMotor.set(ControlMode.PercentOutput, speed);
