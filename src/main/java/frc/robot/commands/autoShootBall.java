@@ -27,12 +27,13 @@ public class autoShootBall extends CommandBase {
         m_shoot.autoShootMotor(m_speed);
         startTime = System.currentTimeMillis();
         reverseTime = startTime + m_clockTime;
-        endTime = reverseTime + 4000;
+        endTime = reverseTime + 3000;
         System.out.println("autoShootBall Init");
     }
 
     // Called repeatedly when this command is scheduled to run
     public void execute() {
+        m_shoot.autoShootMotor(m_speed);
         if (System.currentTimeMillis() >= reverseTime) {
             m_shoot.autoClock(1.0);
         }

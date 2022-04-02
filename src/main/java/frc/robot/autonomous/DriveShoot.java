@@ -10,7 +10,7 @@ public class DriveShoot extends SequentialCommandGroup {
     public DriveShoot(Drivetrain autoDrive, ShootingSystem autoShoot) {
         addCommands(
             new DriveDistance(1300, -0.45, autoDrive),
-            new autoShootBall(1, 5000, autoShoot),
+            new autoShootBall(1, 9000, autoShoot),
             new DriveDistance(300, 0.75, autoDrive),
             new DriveDistance(300, -0.75, autoDrive)
         );

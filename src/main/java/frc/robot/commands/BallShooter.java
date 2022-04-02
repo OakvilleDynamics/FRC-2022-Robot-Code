@@ -62,8 +62,6 @@ public class BallShooter extends CommandBase {
     m_shootingsystem.shooterCheck(auxController.getAButton(), auxController.getBButton(), auxController.getXButton(), auxController.getYButton());
 
     m_shootingsystem.intake(auxController.getRawAxis(2), auxController.getRawAxis(3), driverController.getTrigger());
-
-    m_shootingsystem.getShooterSpeed();
   }
 
   // Called once the command ends or is interrupted.
