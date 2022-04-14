@@ -37,6 +37,8 @@ public class Drivetrain extends SubsystemBase {
 
   private final MecanumDrive drive;
 
+  boolean toggle;
+
   public Drivetrain() {
 
     // Assigns motors
@@ -86,7 +88,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   // Drive method for driving
-  public void drive(double mainx, double mainy, double rotate, double speed) {
+  public void drive(double mainx, double mainy, double rotate, double speed, boolean reverse) {
     if (mainx < 0.3 && mainx > -0.3) {
       mainx = 0;
     } /* else if (mainx > 0.6 || mainx < -0.6) {
@@ -99,6 +101,16 @@ public class Drivetrain extends SubsystemBase {
     } */
     if (rotate < 0.7 && rotate > -0.7) {
       rotate = 0;
+    }
+    if (reverse == true && toggle == true) {
+      toggle = false;
+    } else if (reverse) {
+      toggle = true;
+    }
+    if (toggle) {
+      mainx *= -1;
+      mainy *= -1;
+      rotate *= -1;
     }
     mainx *= -1;
     rotate *= -1;
